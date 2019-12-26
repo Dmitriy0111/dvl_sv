@@ -27,7 +27,7 @@ class dvv_sock #(type mail_t = int);
 endclass : dvv_sock
 
 function dvv_sock::new();
-    sock_m = new();
+    this.sock_m = new();
 endfunction : new
 
 task dvv_sock::connect(dvv_sock #(mail_t) oth_sock);
@@ -57,7 +57,7 @@ task dvv_sock::send_msg(mail_t msg);
 endtask : send_msg
 
 task dvv_sock::rec_msg(ref mail_t msg);
-    this.wait_sock;
+    this.wait_sock();
     this.get_msg(msg);
 endtask : rec_msg
 

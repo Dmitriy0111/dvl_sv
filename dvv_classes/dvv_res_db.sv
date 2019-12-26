@@ -22,16 +22,16 @@ endclass : dvv_res_db
 task dvv_res_db::set_res_db(string name, input res_t in_res);
     dvv_res #(res_t) new_res = new(name, in_res);
     dvv_res #(res_t) res_q [$];
-    res_q = dvv_db.find with(item.name == name);
+    res_q = dvv_db.find with(item.res_name == name);
     if(res_q.size() == 0)
         dvv_db.push_back(new_res);
 endtask : set_res_db
 
 function bit dvv_res_db::get_res_db(string name, inout res_t out_res);
     foreach( dvv_db[i] )
-        if( dvv_db[i].name == name )
+        if( dvv_db[i].res_name == name )
         begin
-            out_res = dvv_db.res_val;
+            out_res = dvv_db[i].res_val;
             return '1;
         end
     return '0;

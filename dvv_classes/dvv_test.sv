@@ -10,9 +10,7 @@
 `ifndef DVV_TEST__SV
 `define DVV_TEST__SV
 
-class dvv_test #(type seq_type) extends dvv_bc;
-
-    dvv_sock    #(seq_type)     item_sock;
+class dvv_test extends dvv_bc;
 
     extern         function new(string name = "", dvv_bc parent = null);
 

@@ -3,7 +3,7 @@
 *  Autor           :   Vlasov D.V.
 *  Data            :   2019.12.25
 *  Language        :   SystemVerilog
-*  Description     :   This is dvv packet
+*  Description     :   This is dvv vm package
 *  Copyright(c)    :   2019 Vlasov D.V.
 */
 
@@ -17,5 +17,10 @@ package dvv_vm_pkg;
     `include "dvv_classes/dvv_res_db.sv"
     
     `include "dvv_classes/dvv_sock.sv"
+
+    `include "dvv_classes/dvv_drv.sv"
+    `include "dvv_classes/dvv_mon.sv"
+    `include "dvv_classes/dvv_gen.sv"
+    `include "dvv_classes/dvv_test.sv"
 
 endpackage : dvv_vm_pkg
