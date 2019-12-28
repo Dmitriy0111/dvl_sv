@@ -20,7 +20,6 @@ package dvv_vm_pkg;
 
     `include "dvv_classes/dvv_drv.sv"
     `include "dvv_classes/dvv_mon.sv"
-    `include "dvv_classes/dvv_agt.sv"
     `include "dvv_classes/dvv_gen.sv"
     `include "dvv_classes/dvv_test.sv"
 

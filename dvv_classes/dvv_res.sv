@@ -20,6 +20,8 @@ class dvv_res #(type res_t);
 endclass : dvv_res
 
 function dvv_res::new(string res_name = "", res_t res_val = null);
+    if( res_val == null )
+        $fatal("RESOURCE VALUE == NULL");
     this.res_val = res_val;
     this.res_name = res_name;
 endfunction : new
