@@ -1,33 +1,33 @@
 /*
-*  File            :   dvv_mon.sv
+*  File            :   dvv_agt.sv
 *  Autor           :   Vlasov D.V.
 *  Data            :   2019.12.25
 *  Language        :   SystemVerilog
-*  Description     :   This is dvv monitor class
+*  Description     :   This is dvv agent class
 *  Copyright(c)    :   2019 Vlasov D.V.
 */
 
-`ifndef DVV_MON__SV
-`define DVV_MON__SV
+`ifndef DVV_AGT__SV
+`define DVV_AGT__SV
 
-class dvv_mon #(type seq_type) extends dvv_bc;
+class dvv_agt #(type seq_type) extends dvv_bc;
 
-    dvv_sock    #(seq_type)     item_sock;
+    dvv_drv #(seq_type) drv;
+    dvv_mon #(seq_type) mon;
 
     extern         function new(string name = "", dvv_bc parent = null);
-
     extern virtual task     build();
     extern virtual task     run();
     
-endclass : dvv_mon
+endclass : dvv_agt
 
-function dvv_mon::new(string name = "", dvv_bc parent = null);
+function dvv_agt::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-task dvv_mon::build();
+task dvv_agt::build();
 endtask : build
-task dvv_mon::run();
+task dvv_agt::run();
 endtask : run
 
-`endif // DVV_MON__SV
+`endif // DVV_AGT__SV
