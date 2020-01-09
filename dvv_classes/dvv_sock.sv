@@ -4,7 +4,7 @@
 *  Data            :   2019.12.25
 *  Language        :   SystemVerilog
 *  Description     :   This is dvv socket
-*  Copyright(c)    :   2019 Vlasov D.V.
+*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
 */
 
 `ifndef DVV_SOCK__SV

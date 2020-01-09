@@ -1,16 +1,16 @@
 /*
-*  File            :   dvv_test.sv
+*  File            :   dvv_env.sv
 *  Autor           :   Vlasov D.V.
-*  Data            :   2019.12.25
+*  Data            :   2020.01.09
 *  Language        :   SystemVerilog
-*  Description     :   This is dvv driver class
+*  Description     :   This is dvv enviroment class
 *  Copyright(c)    :   2019 - 2020 Vlasov D.V.
 */
 
-`ifndef DVV_TEST__SV
-`define DVV_TEST__SV
+`ifndef DVV_ENV__SV
+`define DVV_ENV__SV
 
-class dvv_test extends dvv_bc;
+class dvv_env extends dvv_bc;
 
     extern         function new(string name = "", dvv_bc parent = null);
 
@@ -18,19 +18,17 @@ class dvv_test extends dvv_bc;
     extern virtual task     connect();
     extern virtual task     run();
     
-endclass : dvv_test
+endclass : dvv_env
 
-function dvv_test::new(string name = "", dvv_bc parent = null);
+function dvv_env::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-task dvv_test::build();
+task dvv_env::build();
 endtask : build
-
-task dvv_test::connect();
+task dvv_env::connect();
 endtask : connect
-
-task dvv_test::run();
+task dvv_env::run();
 endtask : run
 
-`endif // DVV_TEST__SV
+`endif // DVV_ENV__SV
