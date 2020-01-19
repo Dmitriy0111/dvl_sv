@@ -16,9 +16,9 @@ virtual class dvv_bp #(type item_type);
 
     bp_type         bp_list [$];
 
-    extern       task     connect(bp_type bp_item);
+    extern task connect(bp_type bp_item);
 
-    pure virtual function write(item_type item);
+    pure virtual function void write(item_type item);
 
 endclass : dvv_bp
 

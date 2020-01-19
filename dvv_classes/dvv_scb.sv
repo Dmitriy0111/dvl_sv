@@ -1,32 +1,32 @@
 /*
-*  File            :   dvv_agt.sv
+*  File            :   dvv_scb.sv
 *  Autor           :   Vlasov D.V.
-*  Data            :   2019.12.25
+*  Data            :   2020.01.17
 *  Language        :   SystemVerilog
-*  Description     :   This is dvv agent class
+*  Description     :   This is dvv scoreboard class
 *  Copyright(c)    :   2019 - 2020 Vlasov D.V.
 */
 
-`ifndef DVV_AGT__SV
-`define DVV_AGT__SV
+`ifndef DVV_SCB__SV
+`define DVV_SCB__SV
 
-class dvv_agt extends dvv_bc;
+class dvv_scb extends dvv_bc;
 
     extern function new(string name = "", dvv_bc parent = null);
-    
+
     extern virtual task build();
     extern virtual task run();
     
-endclass : dvv_agt
+endclass : dvv_scb
 
-function dvv_agt::new(string name = "", dvv_bc parent = null);
+function dvv_scb::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-task dvv_agt::build();
+task dvv_scb::build();
 endtask : build
 
-task dvv_agt::run();
+task dvv_scb::run();
 endtask : run
 
-`endif // DVV_AGT__SV
+`endif // DVV_SCB__SV

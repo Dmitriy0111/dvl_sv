@@ -12,11 +12,11 @@
 
 class dvv_test extends dvv_bc;
 
-    extern         function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvv_bc parent = null);
 
-    extern virtual task     build();
-    extern virtual task     connect();
-    extern virtual task     run();
+    extern virtual task build();
+    extern virtual task connect();
+    extern virtual task run();
     
 endclass : dvv_test
 

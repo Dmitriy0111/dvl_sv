@@ -27,6 +27,7 @@ package dvv_vm_pkg;
     `include "dvv_classes/dvv_scr.sv"
     `include "dvv_classes/dvv_agt.sv"
     `include "dvv_classes/dvv_env.sv"
+    `include "dvv_classes/dvv_scb.sv"
     `include "dvv_classes/dvv_gen.sv"
     `include "dvv_classes/dvv_test.sv"
 

@@ -16,9 +16,9 @@ virtual class dvv_scr #(type item_type) extends dvv_bc;
 
     dvv_ap      #(item_type,scr_type)   item_ap;
 
-    extern         function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvv_bc parent = null);
 
-    pure virtual   function write(item_type item);
+    pure virtual function void write(item_type item);
     
 endclass : dvv_scr
 

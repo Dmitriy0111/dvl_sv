@@ -12,11 +12,11 @@
 
 class dvv_env extends dvv_bc;
 
-    extern         function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvv_bc parent = null);
 
-    extern virtual task     build();
-    extern virtual task     connect();
-    extern virtual task     run();
+    extern virtual task build();
+    extern virtual task connect();
+    extern virtual task run();
     
 endclass : dvv_env
 
@@ -26,8 +26,10 @@ endfunction : new
 
 task dvv_env::build();
 endtask : build
+
 task dvv_env::connect();
 endtask : connect
+
 task dvv_env::run();
 endtask : run
 

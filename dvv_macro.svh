@@ -37,10 +37,10 @@
 
         extern function new(string name = "", dvv_bc parent = null);
 
-        extern function write(int item);
+        extern function void write(int item);
 
-        extern function write_oth_1(int item);
-        extern function write_oth_2(int item);
+        extern function void write_oth_1(int item);
+        extern function void write_oth_2(int item);
         
     endclass : example
 
@@ -51,17 +51,17 @@
         ex_ap_2 = new(this);
     endfunction : new
 
-    function example::write(int item);
+    function void example::write(int item);
         item_0 = item;
         $info("Received item = %h", this.item_0);
     endfunction : write
 
-    function example::write_oth_1(int item);
+    function void example::write_oth_1(int item);
         item_1 = item;
         $info("Received item = %h", this.item_1);
     endfunction : write_oth_1
 
-    function example::write_oth_2(int item);
+    function void example::write_oth_2(int item);
         item_2 = item;
         $info("Received item = %h", this.item_2);
     endfunction : write_oth_2
@@ -74,9 +74,9 @@
  \
         scr_type        scr; \
  \
-        extern         function new(scr_type scr = null); \
+        extern function new(scr_type scr = null); \
  \
-        extern virtual function write(item_type item); \
+        extern virtual function void write(item_type item); \
  \
     endclass : dvv_ap``SCR \
  \
@@ -84,7 +84,7 @@
         this.scr = scr; \
     endfunction : new \
  \
-    function dvv_ap``SCR::write(item_type item); \
+    function void dvv_ap``SCR::write(item_type item); \
         this.scr.write``SCR(item); \
     endfunction : write \
 

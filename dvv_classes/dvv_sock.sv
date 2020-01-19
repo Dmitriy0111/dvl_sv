@@ -16,13 +16,16 @@ class dvv_sock #(type mail_t = int);
     mailbox #(mail_t)   sock_m;
 
     extern function new();
-    extern task     connect(dvv_sock #(mail_t) oth_sock);
-    extern task     trig_sock();
-    extern task     wait_sock();
-    extern task     put_msg(mail_t msg);
-    extern task     get_msg(ref mail_t msg);
-    extern task     send_msg(mail_t msg);
-    extern task     rec_msg(ref mail_t msg);
+
+    extern task connect(dvv_sock #(mail_t) oth_sock);
+
+    extern task trig_sock();
+    extern task wait_sock();
+    extern task put_msg(mail_t msg);
+    extern task get_msg(ref mail_t msg);
+
+    extern task send_msg(mail_t msg);
+    extern task rec_msg(ref mail_t msg);
     
 endclass : dvv_sock
 
@@ -40,7 +43,7 @@ task dvv_sock::trig_sock();
 endtask : trig_sock
 
 task dvv_sock::wait_sock();
-    @(sock_e);
+    @ sock_e;
 endtask : wait_sock
 
 task dvv_sock::put_msg(mail_t msg);

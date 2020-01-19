@@ -14,10 +14,10 @@ class dvv_mon #(type seq_type) extends dvv_bc;
 
     dvv_sock    #(seq_type)     item_sock;
 
-    extern         function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvv_bc parent = null);
 
-    extern virtual task     build();
-    extern virtual task     run();
+    extern virtual task build();
+    extern virtual task run();
     
 endclass : dvv_mon
 
@@ -27,6 +27,7 @@ endfunction : new
 
 task dvv_mon::build();
 endtask : build
+
 task dvv_mon::run();
 endtask : run
 

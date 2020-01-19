@@ -10,13 +10,14 @@
 `ifndef DVV_DRV__SV
 `define DVV_DRV__SV
 
-class dvv_drv #(type seq_type) extends dvv_bc;
+class dvv_drv #(type item_type, resp_type = item_type) extends dvv_bc;
 
-    dvv_sock    #(seq_type)     item_sock;
+    dvv_sock    #(item_type)    item_sock;
+    dvv_sock    #(resp_type)    resp_sock;
 
-    extern         function new(string name = "", dvv_bc parent = null);
-    extern virtual task     build();
-    extern virtual task     run();
+    extern function new(string name = "", dvv_bc parent = null);
+    extern virtual task build();
+    extern virtual task run();
     
 endclass : dvv_drv
 
@@ -26,6 +27,7 @@ endfunction : new
 
 task dvv_drv::build();
 endtask : build
+
 task dvv_drv::run();
 endtask : run
 
