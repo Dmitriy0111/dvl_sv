@@ -12,6 +12,8 @@ package dvv_vm_pkg;
     `include "dvv_classes/dvv_cc.sv"
 
     `include "dvv_classes/dvv_bc.sv"
+
+    `include "dvv_classes/dvv_phase.sv"
     
     `include "dvv_classes/ports/dvv_bp.sv"
     `include "dvv_classes/ports/dvv_ap.sv"
