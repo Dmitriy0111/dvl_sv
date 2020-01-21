@@ -1,7 +1,7 @@
 /*
 *  File            :   dvv_phase.sv
 *  Autor           :   Vlasov D.V.
-*  Data            :   2019.01.20
+*  Data            :   2020.01.20
 *  Language        :   SystemVerilog
 *  Description     :   This is dvv phase class
 *  Copyright(c)    :   2019 - 2020 Vlasov D.V.
