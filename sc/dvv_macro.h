@@ -11,6 +11,6 @@
 #define DVV_MACRO__H
 
 #define OBJ_BEGIN(...) \
-    typedef dvv_cc<__VA_ARGS__> create;
+    typedef dvv_cc<__VA_ARGS__> create; \
 
 #endif // DVV_MACRO__H

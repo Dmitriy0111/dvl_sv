@@ -10,24 +10,21 @@
 #ifndef DVV_CC__H
 #define DVV_CC__H
 
-#include <string>
-#include <systemc>
-
-#include "dvv_bc.h"
-
 namespace dvv_vm {
 
     template <typename class_t>
     class dvv_cc 
     {
-        static class_t* create_obj(string name, dvv_bc parent);
+        public:
+            static class_t* create_obj(const sc_module_name name, dvv_bc* parent = NULL);
     };
 
     template <typename class_t>
-    class_t* dvv_cc<class_t>::create_obj(string name, dvv_bc parent) {
-        class_t* obj = new(name, parent);
-        obj->fname = parent.fname + "." + name;
-        cout << "Creating" << obj->fname << "object" << endl;
+    class_t* dvv_cc<class_t>::create_obj(const sc_module_name name, dvv_bc* parent = NULL) {
+        class_t* obj = new class_t(name);
+        obj->parent = parent;
+        parent->add_child(*obj);
+        cout << "Creating " << obj->c_fname << " object" << endl;
         return obj;
     }
 

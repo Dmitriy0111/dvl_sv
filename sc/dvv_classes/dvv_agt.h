@@ -10,21 +10,20 @@
 #ifndef DVV_AGT__H
 #define DVV_AGT__H
 
-#include "dvv_bc.h"
-
 namespace dvv_vm {
 
     class dvv_agt : public dvv_bc
     {
-        dvv_agt(string name = "", dvv_bc parent = NULL);
+        public:
+            explicit dvv_agt(const std::string name);
 
-        virtual void build();
-        virtual void connect();
-        virtual void run();
+            virtual void build();
+            virtual void connect();
+            virtual void run();
     };
 
-    dvv_agt::dvv_agt(string name = "", dvv_bc parent = NULL) {
-        dvv_bc::dvv_bc(name,parent);
+    dvv_agt::dvv_agt(const std::string name) : dvv_bc(name) {
+        dvv_bc::dvv_bc(name);
     }
 
     void dvv_agt::build() {}
