@@ -14,64 +14,72 @@ namespace dvv_vm {
 
     class dvv_bc : public sc_core::sc_module
     {
+    public:
+        typedef std::map< int, dvv_bc*> child_map;
+        typedef child_map::const_iterator child_map_IT;
 
-        public:
-            std::string         c_name;
-            std::string         c_fname; 
+        std::string         c_name;
+        std::string         c_fname;
 
-            dvv_bc*             parent;
+        unsigned int        level;
 
-            dvv_queue<dvv_bc>   child_l = dvv_queue<dvv_bc>(0);
+        dvv_bc*             parent;
+        
+        child_map           child_l;
+        unsigned int        child_num;
 
-            virtual void build();
-            virtual void connect();
-            virtual void run();
+        virtual void build();
+        virtual void connect();
+        virtual void run();
 
-            explicit dvv_bc(sc_module_name name);
-            dvv_bc();
-			dvv_bc(const dvv_bc& oth);
+        explicit dvv_bc(sc_module_name name);
+        dvv_bc();
 
-            ~dvv_bc();
+        void print_map();
+        void print_childs();
 
-            void add_child(const dvv_bc& child);
+        void add_child_(dvv_bc* child);
 
-			void print_childs();
-
-			dvv_bc &operator =(const dvv_bc& oth);
+        dvv_bc &operator =(const dvv_bc& oth);
     };
 
     dvv_bc::dvv_bc(sc_module_name name) : sc_module(name) {
         this->c_name = name;
         this->c_fname = name;
+        child_num = 0;
+        level = 0;
     }
 
-    dvv_bc::dvv_bc() : sc_module(sc_module_name("")) { }
-
-	dvv_bc::dvv_bc(const dvv_bc& oth) : sc_module(sc_module_name("")) {
-		*this = oth;
-	}
-
-    dvv_bc::~dvv_bc() {
-        //child_l.~dvv_queue();
+    dvv_bc::dvv_bc() : sc_module(sc_module_name("")) {
+        child_num = 0;
+        level = 0;
     }
 
     void dvv_bc::build() {}
     void dvv_bc::connect() {}
     void dvv_bc::run() {}
 
-    void dvv_bc::add_child(const dvv_bc& child) {
-        child_l.push_back( child );
+    void dvv_bc::add_child_(dvv_bc* child) {
+        child_l[child_num] = child;
+        child_num++;
     }
 
-	void dvv_bc::print_childs() {
-		for (int i = 0; i < child_l.get_size(); i++) {
-			cout << child_l[i].c_name << endl;
-		}
-	}
+    void dvv_bc::print_map() {
+        for (unsigned int i = 0; i < level; i++)
+            cout << "    ";
+        cout << this->c_name << endl;
+        for (unsigned i = 0; i < child_num; i++) {
+            child_l[i]->print_childs();
+        }
+    }
 
-	dvv_bc& dvv_bc::operator =(const dvv_bc& oth) {
-		return *this;
-	}
+    void dvv_bc::print_childs() {
+        this->print_map();
+    }
+
+    dvv_bc& dvv_bc::operator =(const dvv_bc& oth) {
+        return (dvv_bc&) oth;
+    }
 
 }
 

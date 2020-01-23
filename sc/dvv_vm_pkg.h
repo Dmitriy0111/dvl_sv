@@ -19,12 +19,21 @@
 
     #include "dvv_classes/dvv_queue.h"
 
+    #include "dvv_classes/ports/dvv_bp.h"
+    #include "dvv_classes/ports/dvv_ap.h"
+    #include "dvv_classes/ports/dvv_aep.h"
+
     #include "dvv_classes/dvv_bc.h"
     #include "dvv_classes/dvv_cc.h"
     
+    #include "dvv_classes/dvv_agt.h"
+    #include "dvv_classes/dvv_scb.h"
+    #include "dvv_classes/dvv_scr.h"
+    #include "dvv_classes/dvv_env.h"
+    #include "dvv_classes/dvv_phase.h"
+    #include "dvv_classes/dvv_test.h"
+
     #include "dvv_classes/dvv_res.h"
     #include "dvv_classes/dvv_res_db.h"
-
-    //#include "dvv_classes/dvv_agt.h"
 
 #endif // DVV_VM_PKG__H

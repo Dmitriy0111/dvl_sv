@@ -15,16 +15,18 @@ namespace dvv_vm {
     class dvv_agt : public dvv_bc
     {
         public:
-            explicit dvv_agt(const std::string name);
+            explicit dvv_agt(sc_module_name name);
+
+            dvv_agt();
 
             virtual void build();
             virtual void connect();
             virtual void run();
     };
 
-    dvv_agt::dvv_agt(const std::string name) : dvv_bc(name) {
-        dvv_bc::dvv_bc(name);
-    }
+    dvv_agt::dvv_agt(sc_module_name name) : dvv_bc(name) { }
+
+    dvv_agt::dvv_agt() : dvv_bc("") { }
 
     void dvv_agt::build() {}
     void dvv_agt::connect() {}

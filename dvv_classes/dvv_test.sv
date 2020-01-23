@@ -3,7 +3,7 @@
 *  Autor           :   Vlasov D.V.
 *  Data            :   2019.12.25
 *  Language        :   SystemVerilog
-*  Description     :   This is dvv driver class
+*  Description     :   This is dvv test class
 *  Copyright(c)    :   2019 - 2020 Vlasov D.V.
 */
 

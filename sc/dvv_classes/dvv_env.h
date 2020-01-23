@@ -10,22 +10,23 @@
 #ifndef DVV_ENV__H
 #define DVV_ENV__H
 
-#include "dvv_bc.h"
-
 namespace dvv_vm {
 
     class dvv_env : public dvv_bc
     {
-        dvv_env(string name = "", dvv_bc parent = NULL);
+        public:
+            explicit dvv_env(sc_module_name name);
 
-        virtual void build();
-        virtual void connect();
-        virtual void run();
+            dvv_env();
+
+            virtual void build();
+            virtual void connect();
+            virtual void run();
     };
 
-    dvv_env::dvv_env(string name = "", dvv_bc parent = NULL) {
-        dvv_bc::dvv_bc(name,parent);
-    }
+    dvv_env::dvv_env(sc_module_name name) : dvv_bc(name) { }
+
+    dvv_env::dvv_env() : dvv_bc("") { }
 
     void dvv_env::build() {}
     void dvv_env::connect() {}

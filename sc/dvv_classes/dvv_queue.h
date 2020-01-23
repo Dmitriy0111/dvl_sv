@@ -54,8 +54,8 @@ namespace dvv_vm {
 
     template <typename T>
     bool dvv_queue<T>::push_back(const T& item) {
-		T* new_dvv_q; 
-		new_dvv_q = new T[size + 1];
+        T* new_dvv_q; 
+        new_dvv_q = new T[size + 1];
         for(int i = 0 ; i < size ; i++) {
             new_dvv_q[i] = dvv_q[i];
         }

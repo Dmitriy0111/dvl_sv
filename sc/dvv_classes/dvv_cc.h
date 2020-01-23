@@ -22,8 +22,10 @@ namespace dvv_vm {
     template <typename class_t>
     class_t* dvv_cc<class_t>::create_obj(const sc_module_name name, dvv_bc* parent = NULL) {
         class_t* obj = new class_t(name);
+        obj->c_fname = parent->c_fname + "." + obj->c_name;
         obj->parent = parent;
-        parent->add_child(*obj);
+        obj->level = parent->level + 1;
+        parent->add_child_(obj);
         cout << "Creating " << obj->c_fname << " object" << endl;
         return obj;
     }

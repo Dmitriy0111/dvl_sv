@@ -10,21 +10,22 @@
 #ifndef DVV_SCB__H
 #define DVV_SCB__H
 
-#include "dvv_bc.h"
-
 namespace dvv_vm {
 
     class dvv_scb : dvv_bc {
-        dvv_scb(string name = "", dvv_bc parent = NULL);
+        public:
+            explicit dvv_scb(sc_module_name name);
 
-        virtual void build();
-        virtual void connect();
-        virtual void run();
+            dvv_scb();
+
+            virtual void build();
+            virtual void connect();
+            virtual void run();
     };
 
-    dvv_scb::dvv_scb(string name = "", dvv_bc parent = NULL) {
-        dvv_bc::dvv_bc(name,parent);
-    }
+    dvv_scb::dvv_scb(sc_module_name name) : dvv_bc(name) { }
+
+    dvv_scb::dvv_scb() : dvv_bc("") { }
 
     void dvv_scb::build() {}
     void dvv_scb::connect() {}
