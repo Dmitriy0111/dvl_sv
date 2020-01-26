@@ -17,7 +17,15 @@ namespace dvv_vm {
     {
         public:
             void write(item_type item);
+
+            dvv_aep(std::string p_name = "");
     };
+
+    template <typename item_type>
+    dvv_aep<item_type>::dvv_aep(std::string p_name = "") {
+        this->p_name = p_name;
+        port_num = 0;
+    }
 
     template <typename item_type>
     void dvv_aep<item_type>::write(item_type item) {

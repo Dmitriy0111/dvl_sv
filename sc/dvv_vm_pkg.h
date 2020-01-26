@@ -16,6 +16,7 @@
 
     #include "sysc/kernel/sc_module.h"
     #include "sysc/kernel/sc_process_handle.h"
+    #include "sysc/kernel/sc_dynamic_processes.h"
 
     #include "dvv_classes/dvv_queue.h"
 
@@ -29,6 +30,9 @@
     #include "dvv_classes/dvv_agt.h"
     #include "dvv_classes/dvv_scb.h"
     #include "dvv_classes/dvv_scr.h"
+    #include "dvv_classes/dvv_mon.h"
+    #include "dvv_classes/dvv_gen.h"
+    #include "dvv_classes/dvv_drv.h"
     #include "dvv_classes/dvv_env.h"
     #include "dvv_classes/dvv_phase.h"
     #include "dvv_classes/dvv_test.h"

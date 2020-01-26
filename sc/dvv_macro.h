@@ -72,15 +72,16 @@
  \
             scr_type*        scr; \
  \
-            dvv_ap##SCR(scr_type* scr = NULL); \
+            dvv_ap##SCR(scr_type* scr = NULL, std::string p_name = ""); \
  \
             void write(item_type item); \
  \
     }; \
  \
     template <typename item_type, typename scr_type> \
-    dvv_ap##SCR<item_type, scr_type>::dvv_ap##SCR(scr_type* scr = NULL) : dvv_bp() { \
+    dvv_ap##SCR<item_type, scr_type>::dvv_ap##SCR(scr_type* scr = NULL, std::string p_name = "") : dvv_bp(p_name) { \
         this->scr = scr; \
+        this->p_name = p_name != "" ? p_name : "unnamed_ap"; \
     } \
  \
     template <typename item_type, typename scr_type> \

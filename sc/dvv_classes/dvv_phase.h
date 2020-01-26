@@ -15,12 +15,7 @@ namespace dvv_vm {
     class dvv_phase : dvv_bc
     {
         public:
-            typedef std::map< int, dvv_bc*> c_map;
-
             dvv_bc*     top_c;
-
-            c_map           comp_l;
-            unsigned int    comp_num;
 
             explicit dvv_phase(sc_module_name name);
 
@@ -44,17 +39,32 @@ namespace dvv_vm {
     void dvv_phase::build() {
         cout << "Build phase start" << endl;
         top_c->build();
-        comp_l = top_c->child_l;
+        this->child_l = top_c->child_l;
+        this->child_num = child_l.size();
+        for(unsigned int i = 0 ; i < child_num ; i++) {
+            child_l[i]->build();
+            for(unsigned int j = 0 ; j < child_l[i]->child_num ; j++) {
+                child_l[child_num] = child_l[i]->child_l[j];
+                child_num++;
+            }
+        }
         cout << "Build phase complete" << endl;
     }
 
     void dvv_phase::connect() {
         cout << "Connect phase start" << endl;
+        top_c->connect();
+        for(unsigned int i = 0 ; i < child_num ; i++) {
+            child_l[i]->connect();
+        }
         cout << "Connect phase complete" << endl;
     }
     
     void dvv_phase::run() {
         cout << "Run phase start" << endl;
+        for(unsigned int i = 0 ; i < child_num ; i++) {
+        //    child_l[i]->run();
+        }
         cout << "Run phase complete" << endl;
     }
 

@@ -18,13 +18,27 @@ namespace dvv_vm {
         public:
             typedef std::map< int, dvv_bp*> port_map;
 
+            std::string     p_name;
+
             port_map        port_l;
             unsigned int    port_num;
+
+            dvv_bp();
+
+            dvv_bp(std::string p_name);
 
             virtual void connect(dvv_bp<item_type>* oth);
 
             virtual void write(item_type item);
     };
+
+    template <typename item_type>
+    dvv_bp<item_type>::dvv_bp() { }
+
+    template <typename item_type>
+    dvv_bp<item_type>::dvv_bp(std::string p_name) { 
+        this->p_name = p_name;
+    }
 
     template <typename item_type>
     void dvv_bp<item_type>::connect(dvv_bp<item_type>* oth) {
