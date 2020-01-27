@@ -167,8 +167,8 @@ int sc_main(int, char **)
     sc_signal<sc_int<32>> data;
     sc_signal<sc_int<32>> addr;
 
-    sif_test* test = new sif_test("test");
-    trans* tr = new trans();
+    //sif_test* test = new sif_test("test");
+    //trans* tr = new trans();
     dut* dut_p = new dut("dut_p");
     drv* drv_p = new drv("drv_p");
 
@@ -188,16 +188,16 @@ int sc_main(int, char **)
     sc_trace(tf, data, "data");
     sc_trace(tf, we_re, "we_re");
     
-    tr->data = 10;
-    tr->addr = 20;
-    tr->we_re = 30;
+    //tr->data = 10;
+    //tr->addr = 20;
+    //tr->we_re = 30;
 
-    test->test_start();
-    test->print_map();
+    //test->test_start();
+    //test->print_map();
 
     sc_start();
 
-    test->env->agt->mon->mon_aep->write(*tr);
+    //test->env->agt->mon->mon_aep->write(*tr);
 
     sc_close_vcd_trace_file(tf);
 

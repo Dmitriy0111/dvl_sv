@@ -14,14 +14,15 @@ class dvv_ap #(type item_type, type scr_type) extends dvv_bp #(item_type);
 
     scr_type        scr;
 
-    extern function new(scr_type scr = null);
+    extern function new(scr_type scr = null, string p_name = "");
 
     extern function void write(item_type item);
     
 endclass : dvv_ap
 
-function dvv_ap::new(scr_type scr = null);
+function dvv_ap::new(scr_type scr = null, string p_name = "");
     this.scr = scr;
+    this.p_name = p_name != "" ? p_name : "unnamed_ap";
 endfunction : new
 
 function void dvv_ap::write(item_type item);

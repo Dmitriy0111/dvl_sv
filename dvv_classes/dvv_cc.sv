@@ -17,6 +17,9 @@ class dvv_cc #(type class_t);
     static function class_t create_obj(string name, dvv_bc parent);
         class_t obj = new(name, parent);
         obj.fname = { parent.fname , "." , name };
+        obj.level = parent.level+1;
+        if(parent != null)
+            parent.add_child(obj);
         $display("Creating %s object", obj.fname);
         return obj;
     endfunction : create_obj

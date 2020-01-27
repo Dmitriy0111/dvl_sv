@@ -14,6 +14,8 @@ virtual class dvv_bp #(type item_type);
 
     typedef dvv_bp #(item_type) bp_type;
 
+    string          p_name;
+
     bp_type         bp_list [$];
 
     extern task connect(bp_type bp_item);

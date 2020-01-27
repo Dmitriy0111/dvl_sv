@@ -10,13 +10,19 @@
 `ifndef DVV_BC__SV
 `define DVV_BC__SV
 
+typedef class dvv_run_phase;
+
 class dvv_bc;
 
-    string  name;
-    string  fname;
+    string          name;
+    string          fname;
 
-    dvv_bc  parent;
-    dvv_bc  child_l [$];
+    dvv_run_phase   run_phase;
+
+    dvv_bc          parent;
+    dvv_bc          child_l [$];
+
+    int             level;
 
     extern function new(string name = "", dvv_bc parent = null);
 
@@ -25,6 +31,9 @@ class dvv_bc;
     extern virtual task build();
     extern virtual task connect();
     extern virtual task run();
+
+    extern task print_map();
+    extern task print_childs();
     
 endclass : dvv_bc
 
@@ -32,9 +41,8 @@ function dvv_bc::new(string name = "", dvv_bc parent = null);
     this.name = name;
     this.parent = parent;
     this.fname = name;
-
-    if(parent != null)
-        this.parent.add_child(this);
+    level = 0;
+    run_phase = new("run_phase", this);
 endfunction : new
 
 task dvv_bc::add_child(dvv_bc child);
@@ -49,5 +57,17 @@ endtask : connect
 
 task dvv_bc::run();
 endtask : run
+
+task dvv_bc::print_map();
+    for(int i = 0 ; i < level ; i++)
+        $write("    ");
+    $display(this.name);
+    foreach(child_l[i])
+        child_l[i].print_childs();
+endtask : print_map
+
+task dvv_bc::print_childs();
+    this.print_map();
+endtask : print_childs
 
 `endif // DVV_BC__SV

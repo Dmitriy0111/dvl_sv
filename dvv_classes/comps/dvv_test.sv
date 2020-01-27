@@ -26,7 +26,7 @@ endclass : dvv_test
 
 function dvv_test::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
-    phase = new("[ PHASE ]", this);
+    phase = new("test_phase", this);
 endfunction : new
 
 task dvv_test::build();
@@ -40,6 +40,8 @@ endtask : run
 
 task dvv_test::test_start();
     phase.build();
+    $display("Testbench map:");
+    this.print_map();
     phase.connect();
     phase.run();
 endtask : test_start

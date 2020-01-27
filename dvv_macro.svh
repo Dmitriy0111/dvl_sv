@@ -46,9 +46,9 @@
 
     function example::new(string name = "", dvv_bc parent = null);
         super.new(name,parent);
-        item_ap = new(this);
-        ex_ap_1 = new(this);
-        ex_ap_2 = new(this);
+        item_ap = new(this,"item_ap");
+        ex_ap_1 = new(this,"ex_ap_1");
+        ex_ap_2 = new(this,"ex_ap_2");
     endfunction : new
 
     function void example::write(int item);
@@ -74,14 +74,15 @@
  \
         scr_type        scr; \
  \
-        extern function new(scr_type scr = null); \
+        extern function new(scr_type scr = null, string p_name = ""); \
  \
         extern virtual function void write(item_type item); \
  \
     endclass : dvv_ap``SCR \
  \
-    function dvv_ap``SCR::new(scr_type scr = null); \
+    function dvv_ap``SCR::new(scr_type scr = null, string p_name = ""); \
         this.scr = scr; \
+        this.p_name = p_name !="" ? p_name : "unnamed_ap"; \
     endfunction : new \
  \
     function void dvv_ap``SCR::write(item_type item); \
