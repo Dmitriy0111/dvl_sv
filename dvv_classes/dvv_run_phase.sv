@@ -22,11 +22,9 @@ endclass : dvv_run_phase
 
 function dvv_run_phase::new(string name = "", dvv_bc parent = null);
     this.parent = parent;
-    $display(parent.fname);
 endfunction : new
 
 task dvv_run_phase::exec();
-    $display("Call parent run task", parent.fname);
     parent.run();
 endtask : exec
 

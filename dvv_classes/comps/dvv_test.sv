@@ -27,6 +27,7 @@ endclass : dvv_test
 function dvv_test::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
     phase = new("test_phase", this);
+    fp = $fopen("sim.log","w");
 endfunction : new
 
 task dvv_test::build();
@@ -40,7 +41,7 @@ endtask : run
 
 task dvv_test::test_start();
     phase.build();
-    $display("Testbench map:");
+    print("Testbench map:\n");
     this.print_map();
     phase.connect();
     phase.run();

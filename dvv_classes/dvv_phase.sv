@@ -27,7 +27,7 @@ function dvv_phase::new(string name = "", dvv_bc parent = null);
 endfunction : new
 
 task dvv_phase::build();
-    $display("Build phase start");
+    print("Build phase start\n");
     top_c.build();
     child_l = top_c.child_l;
     foreach(child_l[i])
@@ -36,24 +36,25 @@ task dvv_phase::build();
         foreach(child_l[i].child_l[j])
             child_l.push_back(child_l[i].child_l[j]);
     end
-    $display("Build phase complete");
+    print("Build phase complete\n");
 endtask : build
 
 task dvv_phase::connect();
-    $display("Connect phase start");
+    print("Connect phase start\n");
     top_c.connect();
     foreach(child_l[i])
         child_l[i].connect();
-    $display("Connect phase complete");
+    print("Connect phase complete\n");
 endtask : connect
 
 task dvv_phase::run();
-    $display("Run phase start");
+    print("Run phase start\n");
     foreach(child_l[i])
     fork
         child_l[i].run_phase.exec();
     join_any
-    $display("Run phase complete");
+    #100000ns;
+    print("Run phase complete\n");
 endtask : run
 
 `endif // DVV_PHASE__SV

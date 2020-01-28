@@ -9,9 +9,13 @@
 
 package dvv_vm_pkg;
     
+    `include "dvv_classes/dvv_bo.sv"
+    
     `include "dvv_classes/dvv_cc.sv"
 
     `include "dvv_classes/dvv_bc.sv"
+
+    `include "dvv_classes/dvv_item.sv"
     
     `include "dvv_classes/dvv_phase.sv"
     `include "dvv_classes/dvv_run_phase.sv"

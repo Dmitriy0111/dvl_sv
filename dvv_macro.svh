@@ -11,7 +11,26 @@
 `define DVV_MACRO__SV
 
 `define OBJ_BEGIN(T) \
-    typedef dvv_cc #(T) create;
+    typedef dvv_cc #(T) create; \
+    typedef T this_type; \
+    static this_type me = new(); \
+    static function create get_type(); \
+        return create::get(); \
+    endfunction \
+    static function create get_type_(); \
+    return create::get(); \
+    endfunction \
+    static function int add_type(); \
+        type_names[`"T`"] = get_type(); \
+        type_bc[`"T`"] = me; \
+        return 1; \
+    endfunction : add_type \
+    static bit registred = add_type(); \
+    function T create_obj(string name = "", dvv_bc parent = null); \
+    T obj; \
+    obj = new(name, parent); \
+    return obj; \
+    endfunction : create_obj \
 
 /*
     MACRO `dvv_ap_decl(SCR)
