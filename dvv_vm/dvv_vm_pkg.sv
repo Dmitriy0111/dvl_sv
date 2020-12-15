@@ -18,7 +18,6 @@ package dvv_vm_pkg;
     `include "dvv_classes/dvv_item.sv"
     
     `include "dvv_classes/dvv_phase.sv"
-    `include "dvv_classes/dvv_run_phase.sv"
     
     `include "dvv_classes/ports/dvv_bp.sv"
     `include "dvv_classes/ports/dvv_ap.sv"
@@ -37,5 +36,9 @@ package dvv_vm_pkg;
     `include "dvv_classes/comps/dvv_scb.sv"
     `include "dvv_classes/comps/dvv_gen.sv"
     `include "dvv_classes/comps/dvv_test.sv"
+
+    `include "dvv_classes/dvv_root.sv"
+
+    `include "dvv_commons.svh"
 
 endpackage : dvv_vm_pkg

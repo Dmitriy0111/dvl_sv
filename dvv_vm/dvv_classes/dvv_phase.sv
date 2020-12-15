@@ -19,6 +19,8 @@ class dvv_phase extends dvv_bc;
     extern task build();
     extern task connect();
     extern task run();
+    extern task clean_up();
+    extern task report();
     
 endclass : dvv_phase
 
@@ -51,10 +53,24 @@ task dvv_phase::run();
     print("Run phase start\n");
     foreach(child_l[i])
     fork
-        child_l[i].run_phase.exec();
-    join_any
-    #100000ns;
+        automatic int index = i;
+        child_l[index].run();
+    join_none
+    #0;
     print("Run phase complete\n");
 endtask : run
+
+task dvv_phase::clean_up();
+    wait(run_drop == 0);
+    print("Clean up phase start\n");
+    foreach(child_l[i])
+        child_l[i].clean_up();
+    print("Clean up phase complete\n");
+endtask : clean_up
+
+task dvv_phase::report();
+    print("Test complete!\n");
+    $stop;
+endtask : report
 
 `endif // DVV_PHASE__SV

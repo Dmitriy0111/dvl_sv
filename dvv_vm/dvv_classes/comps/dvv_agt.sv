@@ -14,19 +14,10 @@ class dvv_agt extends dvv_bc;
 
     extern function new(string name = "", dvv_bc parent = null);
     
-    extern virtual task build();
-    extern virtual task run();
-    
 endclass : dvv_agt
 
 function dvv_agt::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
 endfunction : new
-
-task dvv_agt::build();
-endtask : build
-
-task dvv_agt::run();
-endtask : run
 
 `endif // DVV_AGT__SV

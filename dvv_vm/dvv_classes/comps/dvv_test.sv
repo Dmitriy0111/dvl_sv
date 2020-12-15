@@ -12,39 +12,12 @@
 
 class dvv_test extends dvv_bc;
 
-    dvv_phase   phase;
-
     extern function new(string name = "", dvv_bc parent = null);
-
-    extern virtual task build();
-    extern virtual task connect();
-    extern virtual task run();
-
-    extern virtual task test_start();
     
 endclass : dvv_test
 
 function dvv_test::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
-    phase = new("test_phase", this);
-    fp = $fopen("sim.log","w");
 endfunction : new
-
-task dvv_test::build();
-endtask : build
-
-task dvv_test::connect();
-endtask : connect
-
-task dvv_test::run();
-endtask : run
-
-task dvv_test::test_start();
-    phase.build();
-    print("Testbench map:\n");
-    this.print_map();
-    phase.connect();
-    phase.run();
-endtask : test_start
 
 `endif // DVV_TEST__SV

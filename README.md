@@ -1,8 +1,9 @@
 # **dvv_vm**
-    This is my repo with verification components
+    This is my sandbox with verification components
 
 ## Verification classes list:
 
+* dvv_bo - base object;
 * dvv_bc - base class;
 * dvv_cc - creator class;
 * dvv_phase - phase class;
@@ -19,4 +20,5 @@
 * dvv_env - enviroment class;
 * dvv_scb - scoreboard class;
 * dvv_gen - generator class;
-* dvv_test - test class.
+* dvv_test - test class;
+* dvv_root - root class.

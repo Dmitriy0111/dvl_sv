@@ -13,20 +13,11 @@
 class dvv_scb extends dvv_bc;
 
     extern function new(string name = "", dvv_bc parent = null);
-
-    extern virtual task build();
-    extern virtual task run();
     
 endclass : dvv_scb
 
 function dvv_scb::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
 endfunction : new
-
-task dvv_scb::build();
-endtask : build
-
-task dvv_scb::run();
-endtask : run
 
 `endif // DVV_SCB__SV

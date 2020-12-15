@@ -1,7 +1,60 @@
-SYSTEMC_LIB = D:\DM\work\systemc-2.3.3\systemc-2.3.3\msvc10\SystemC\Release\SystemC-2.3.3
-SYSTEMC_INC = D:\DM\work\systemc-2.3.3\systemc-2.3.3\src
 
-systemc_test:
-	mkdir -p systemc_exe
-	g++ -o systemc_exe/exe.exe -I. -I$(SYSTEMC_INC) -L. -L$(SYSTEMC_LIB) -Wl,-rpath=$(SYSTEMC_INC) -Wl,-lsystemc -lm sc/main.cpp 
-	systemc_exe/exe.exe
+help:
+	$(info make help           - show this message)
+	$(info make clean          - delete synth and simulation folders)
+	$(info make sim            - the same as sim_gui)
+	$(info make sim_cmd        - run simulation in Modelsim (console mode))
+	$(info make sim_gui        - run simulation in Modelsim (gui mode))
+	$(info Open and read the Makefile for details)
+	@true
+
+PWD     := $(shell pwd)
+RUN_DIR  = $(PWD)/run
+
+########################################################
+# common make targets
+
+show_pwd:
+	PWD
+
+clean: \
+	sim_clean \
+	log_clean
+
+sim_all: \
+	sim_cmd 
+
+sim: sim_gui
+
+########################################################
+# simulation - Modelsim
+
+SIM_SCRIPT_NAME = run_i2c_test.tcl
+
+VSIM_DIR = $(PWD)/sim_modelsim
+
+VLIB_BIN = cd $(VSIM_DIR) && vlib
+VLOG_BIN = cd $(VSIM_DIR) && vlog
+VSIM_BIN = cd $(VSIM_DIR) && vsim
+
+VSIM_OPT_COMMON += -do $(RUN_DIR)/$(SIM_SCRIPT_NAME) -onfinish final
+
+VSIM_OPT_CMD     = -c
+VSIM_OPT_CMD    += -onfinish exit
+
+VSIM_OPT_GUI     = -gui -onfinish stop
+
+sim_clean:
+	rm -rfd $(VSIM_DIR)
+
+sim_dir: sim_clean
+	mkdir $(VSIM_DIR)
+
+sim_cmd: sim_dir
+	$(VSIM_BIN) $(VSIM_OPT_COMMON) $(VSIM_OPT_CMD)
+
+sim_gui: sim_dir
+	$(VSIM_BIN) $(VSIM_OPT_COMMON) $(VSIM_OPT_GUI) &
+
+log_clean:
+	rm -rfd *.log

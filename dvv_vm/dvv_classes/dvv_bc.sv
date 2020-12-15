@@ -10,11 +10,7 @@
 `ifndef DVV_BC__SV
 `define DVV_BC__SV
 
-typedef class dvv_run_phase;
-
 class dvv_bc extends dvv_bo;
-
-    dvv_run_phase   run_phase;
 
     dvv_bc          child_l [$];
 
@@ -27,6 +23,7 @@ class dvv_bc extends dvv_bo;
     extern virtual task build();
     extern virtual task connect();
     extern virtual task run();
+    extern virtual task clean_up();
 
     extern task print_map();
     extern task print_childs();
@@ -42,7 +39,6 @@ function dvv_bc::new(string name = "", dvv_bc parent = null);
     this.parent = parent;
     this.fname = name;
     level = 0;
-    run_phase = new("run_phase", this);
     if(parent != null)
         parent.add_child(this);
 endfunction : new
@@ -59,6 +55,9 @@ endtask : connect
 
 task dvv_bc::run();
 endtask : run
+
+task dvv_bc::clean_up();
+endtask : clean_up
 
 task dvv_bc::print_map();
     for(int i = 0 ; i < level ; i++)

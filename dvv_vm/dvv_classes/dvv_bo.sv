@@ -12,6 +12,8 @@
 
 class dvv_bo;
 
+    static int      run_drop = 0;
+
     string          name;
     string          fname;
 
@@ -33,6 +35,9 @@ class dvv_bo;
     extern task stdout_write(string msg);
 
     extern task print(string msg = "");
+
+    extern task raise();
+    extern task drop();
     
 endclass : dvv_bo
 
@@ -57,5 +62,13 @@ task dvv_bo::print(string msg = "");
     if( write2stdout )
         stdout_write(msg);
 endtask : print
+
+task dvv_bo::raise();
+    run_drop++;
+endtask : raise
+
+task dvv_bo::drop();
+    run_drop--;
+endtask : drop
 
 `endif // DVV_BO__SV
