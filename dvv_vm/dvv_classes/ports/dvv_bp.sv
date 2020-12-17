@@ -12,6 +12,8 @@
 
 virtual class dvv_bp #(type item_type);
 
+    const static string type_name = "dvv_bp";
+
     typedef dvv_bp #(item_type) bp_type;
 
     string          p_name;

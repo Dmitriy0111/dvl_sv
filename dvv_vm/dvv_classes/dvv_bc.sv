@@ -12,9 +12,14 @@
 
 class dvv_bc extends dvv_bo;
 
+    const static string type_name = "dvv_bc";
+
     dvv_bc          child_l [$];
 
     static  dvv_bc  type_bc[string];
+
+    static  dvv_bc  test;
+    dvv_bc          test_comps[$];
 
     extern function new(string name = "", dvv_bc parent = null);
 
@@ -28,9 +33,9 @@ class dvv_bc extends dvv_bo;
     extern task print_map();
     extern task print_childs();
 
-    virtual function dvv_bc create_obj(string name, dvv_bc parent);
+    extern virtual function string get_type_name();
 
-    endfunction
+    extern virtual function dvv_bc create_obj(string name, dvv_bc parent);
     
 endclass : dvv_bc
 
@@ -70,5 +75,12 @@ endtask : print_map
 task dvv_bc::print_childs();
     this.print_map();
 endtask : print_childs
+
+function string dvv_bc::get_type_name();
+    return type_name;
+endfunction : get_type_name
+
+function dvv_bc dvv_bc::create_obj(string name, dvv_bc parent);
+endfunction : create_obj
 
 `endif // DVV_BC__SV

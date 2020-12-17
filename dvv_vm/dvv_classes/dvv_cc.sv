@@ -14,6 +14,8 @@ typedef class dvv_bc;
 
 class dvv_cc #(type class_t) extends dvv_bo;
 
+    const static string type_name = "dvv_cc";
+
     typedef dvv_cc #(class_t) this_type;
 
     static this_type me = get();

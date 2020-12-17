@@ -54,11 +54,14 @@ task wb_drv::write_reg();
     mth.set_wb_we('1);
     mth.set_wb_stb('1);
     mth.set_wb_cyc('1);
-    mth.wait_ack();
+    do
+    begin
+        mth.wait_clk();
+    end
+    while( !mth.get_wb_ack() );
     mth.set_wb_we('0);
     mth.set_wb_stb('0);
     mth.set_wb_cyc('0);
-    mth.wait_clk();
 endtask : write_reg
 
 task wb_drv::read_reg();
@@ -66,11 +69,14 @@ task wb_drv::read_reg();
     mth.set_wb_we('0);
     mth.set_wb_stb('1);
     mth.set_wb_cyc('1);
-    mth.wait_ack();
+    do
+    begin
+        mth.wait_clk();
+    end
+    while( !mth.get_wb_ack() );
     mth.set_wb_we('0);
     mth.set_wb_stb('0);
     mth.set_wb_cyc('0);
-    mth.wait_clk();
     resp_item.data = mth.get_wb_data_o();
     resp_sock.send_msg(resp_item);
 endtask : read_reg

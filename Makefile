@@ -40,7 +40,7 @@ VSIM_BIN = cd $(VSIM_DIR) && vsim
 VSIM_OPT_COMMON += -do $(RUN_DIR)/$(SIM_SCRIPT_NAME) -onfinish final
 
 VSIM_OPT_CMD     = -c
-VSIM_OPT_CMD    += -onfinish exit
+VSIM_OPT_CMD    += -onfinish stop
 
 VSIM_OPT_GUI     = -gui -onfinish stop
 

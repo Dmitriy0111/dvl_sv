@@ -12,6 +12,8 @@
 
 class dvv_ap #(type item_type, type scr_type) extends dvv_bp #(item_type);
 
+    const static string type_name = "dvv_ap";
+
     scr_type        scr;
 
     extern function new(scr_type scr = null, string p_name = "");

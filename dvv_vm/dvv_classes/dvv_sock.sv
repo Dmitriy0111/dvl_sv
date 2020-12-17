@@ -12,6 +12,8 @@
 
 class dvv_sock #(type mail_t = int);
 
+    const static string type_name = "dvv_sock";
+
     event               sock_e;
     mailbox #(mail_t)   sock_m;
 

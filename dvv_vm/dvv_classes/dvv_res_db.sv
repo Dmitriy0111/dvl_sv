@@ -12,6 +12,8 @@
 
 class dvv_res_db #(type res_t);
 
+    const static string type_name = "dvv_res_db";
+
     static  dvv_res     #(res_t)    dvv_db[$];
 
     extern static task         set_res_db(string name, input res_t in_res);

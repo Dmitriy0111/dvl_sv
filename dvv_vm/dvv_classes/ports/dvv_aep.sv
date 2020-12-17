@@ -12,6 +12,8 @@
 
 class dvv_aep #(type item_type) extends dvv_bp #(item_type);
 
+    const static string type_name = "dvv_aep";
+
     extern function new(string p_name = "");
 
     extern function void write(item_type item);

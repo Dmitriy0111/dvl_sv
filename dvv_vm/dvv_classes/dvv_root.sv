@@ -12,8 +12,10 @@
 
 class dvv_root extends dvv_bc;
 
-    dvv_phase   phase;
-    dvv_bc      test;
+    const static string type_name = "dvv_root";
+
+    dvv_domain  domain;
+    
     string      test_name;
 
     extern function new(string name = "", dvv_bc parent = null);
@@ -24,7 +26,7 @@ endclass : dvv_root
 
 function dvv_root::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
-    phase = new("test_phase", this);
+    domain = new("domain",this);
     fp = $fopen("sim.log","w");
 endfunction : new
 
@@ -37,13 +39,10 @@ task dvv_root::run_test(string name = "");
     else
         $fatal;
 
-    phase.build();
-    print("Testbench map:\n");
-    this.print_map();
-    phase.connect();
-    phase.run();
-    phase.clean_up();
-    phase.report();
+    domain.add_phases();
+
+    domain.exec();
+
 endtask : run_test
 
 `endif // DVV_ROOT__SV

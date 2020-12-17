@@ -61,13 +61,6 @@ task tr_dgen::run();
         item_sock.send_msg(item);
         item_sock.wait_sock();
         
-        item.set_addr( 32'h6 );
-        item.set_data( 32'h28 );
-        item.set_we_re( '1 );
-        item.tr_num++;
-        item_sock.send_msg(item);
-        item_sock.wait_sock();
-        
         for(; !$feof(fp) ;)
         begin
             $fscanf(fp,"%s %h %h", cmd, addr, data);

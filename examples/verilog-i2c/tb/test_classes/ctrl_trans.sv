@@ -51,8 +51,8 @@ endfunction : new
 
 task ctrl_trans::print_tr();
     string msg;
-    $swrite(msg, "%sdata  : 0x%h", msg, data);
-    $swrite(msg, "%saddr  : 0x%h", msg, addr);
+    $swrite(msg, "%sdata  : 0x%h ", msg, data);
+    $swrite(msg, "%saddr  : 0x%h ", msg, addr);
     $swrite(msg, "%swe_re : %s\n", msg, ( we_re ? "WRITE" : "READ "));
     print(msg);
 endtask : print_tr

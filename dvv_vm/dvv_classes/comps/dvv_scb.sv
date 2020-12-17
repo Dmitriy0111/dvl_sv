@@ -12,6 +12,8 @@
 
 class dvv_scb extends dvv_bc;
 
+    const static string type_name = "dvv_scb";
+
     extern function new(string name = "", dvv_bc parent = null);
     
 endclass : dvv_scb

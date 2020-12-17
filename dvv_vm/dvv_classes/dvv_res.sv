@@ -12,6 +12,8 @@
 
 class dvv_res #(type res_t);
 
+    const static string type_name = "dvv_res";
+
     res_t       res_val;
     string      res_name;
 

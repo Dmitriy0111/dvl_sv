@@ -12,6 +12,8 @@
 
 class dvv_env extends dvv_bc;
 
+    const static string type_name = "dvv_env";
+
     extern function new(string name = "", dvv_bc parent = null);
     
 endclass : dvv_env

@@ -12,6 +12,8 @@
 
 class dvv_item extends dvv_bo;
 
+    const static string type_name = "dvv_item";
+
     extern function new(string name = "", dvv_bc parent = null);
     
 endclass : dvv_item

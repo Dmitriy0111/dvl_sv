@@ -15,6 +15,7 @@ class wb_env extends dvv_env;
 
     tr_gen                      gen;
     wb_agt                      agt;
+    wb_cov                      cov;
 
     dvv_sock    #(ctrl_trans)   gen2drv_sock;
     dvv_sock    #(ctrl_trans)   drv2gen_sock;
@@ -35,6 +36,8 @@ task wb_env::build();
 
     gen = tr_dgen ::create::create_obj("direct_gen", this);
 
+    cov = wb_cov::create::create_obj("wb_cov", this);
+
     gen2drv_sock = new();
     if( gen2drv_sock == null )
         $fatal("gen2drv_sock not created!");
@@ -50,6 +53,8 @@ task wb_env::connect();
 
     agt.drv.resp_sock.connect(drv2gen_sock);
     gen.resp_sock.connect(drv2gen_sock);
+
+    agt.mon.item_aep.connect(cov.item_ap);
 endtask : connect
 
 `endif // WB_ENV__SV

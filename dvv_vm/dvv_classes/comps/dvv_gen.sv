@@ -12,6 +12,8 @@
 
 class dvv_gen #(type item_type, resp_type = item_type) extends dvv_bc;
 
+    const static string type_name = "dvv_gen";
+
     dvv_sock    #(item_type)    item_sock;
     dvv_sock    #(resp_type)    resp_sock;
 

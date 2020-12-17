@@ -12,7 +12,11 @@
 
 class dvv_mon #(type seq_type) extends dvv_bc;
 
+    const static string type_name = "dvv_mon";
+
     dvv_sock    #(seq_type)     item_sock;
+
+    dvv_aep     #(seq_type)     item_aep;
 
     extern function new(string name = "", dvv_bc parent = null);
     

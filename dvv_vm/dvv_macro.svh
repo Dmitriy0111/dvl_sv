@@ -11,6 +11,7 @@
 `define DVV_MACRO__SV
 
 `define OBJ_BEGIN(T) \
+    const static string type_name = `"T`"; \
     typedef dvv_cc #(T) create; \
     typedef T this_type; \
     static this_type me = new(); \

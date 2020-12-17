@@ -20,9 +20,11 @@ package i2c_test_pkg;
     `include "../test_classes/wb/wb_drv.sv"
     `include "../test_classes/wb/wb_mon.sv"
     `include "../test_classes/wb/wb_agt.sv"
+    `include "../test_classes/wb/wb_cov.sv"
 
     `include "../test_classes/gen/tr_gen.sv"
     `include "../test_classes/gen/tr_dgen.sv"
+    `include "../test_classes/gen/tr_rgen.sv"
 
     `include "../test_classes/wb/wb_env.sv"
 

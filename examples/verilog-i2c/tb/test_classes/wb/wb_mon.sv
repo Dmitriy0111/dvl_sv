@@ -21,8 +21,6 @@ class wb_mon extends dvv_mon #(ctrl_trans);
 
     wb_mth                  mth;
 
-    dvv_aep #(ctrl_trans)   cov_aep;
-
     extern function new(string name = "", dvv_bc parent = null);
 
     extern task build();
@@ -35,7 +33,7 @@ endclass : wb_mon
 
 function wb_mon::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
-    cov_aep = new("cov_aep");
+    item_aep = new("item_aep");
 endfunction : new
 
 task wb_mon::build();
@@ -58,28 +56,30 @@ endtask : run
 task wb_mon::pars_we();
     forever
     begin
-        wait( mth.ctrl_vif.wbs_we_i && mth.ctrl_vif.wbs_stb_i && mth.ctrl_vif.wbs_cyc_i && mth.ctrl_vif.wbs_ack_o);
-        mth.wait_clk();
-        item.set_data(mth.get_wb_data_i());
-        item.set_addr(mth.get_wb_addr());
-        item.set_we_re(1'b1);
-        cov_aep.write(item);
-        $swrite(msg,"WRITE_TR addr = 0x%h, data = 0x%h at time %tns\n", mth.get_wb_addr(), mth.get_wb_data_i(), $time());
-        print(msg);
+        mth.wait_write_cycle();
+        begin
+            item.set_data(mth.get_wb_data_i());
+            item.set_addr(mth.get_wb_addr());
+            item.set_we_re(1'b1);
+            item_aep.write(item);
+            $swrite(msg,"WRITE_TR addr = 0x%h, data = 0x%h at time %tps\n", mth.get_wb_addr(), mth.get_wb_data_i(), $time());
+            print(msg);
+        end
     end
 endtask : pars_we
 
 task wb_mon::pars_re();
     forever
     begin
-        wait( ! mth.ctrl_vif.wbs_we_i && mth.ctrl_vif.wbs_stb_i && mth.ctrl_vif.wbs_cyc_i && mth.ctrl_vif.wbs_ack_o);
-        mth.wait_clk();
-        item.set_data(mth.get_wb_data_o());
-        item.set_addr(mth.get_wb_addr());
-        item.set_we_re(1'b0);
-        cov_aep.write(item);
-        $swrite(msg,"READ_TR  addr = 0x%h, data = 0x%h at time %tns\n", mth.get_wb_addr(), mth.get_wb_data_o(), $time());
-        print(msg);
+        mth.wait_read_cycle();
+        begin
+            item.set_data(mth.get_wb_data_o());
+            item.set_addr(mth.get_wb_addr());
+            item.set_we_re(1'b0);
+            item_aep.write(item);
+            $swrite(msg,"READ_TR  addr = 0x%h, data = 0x%h at time %tps\n", mth.get_wb_addr(), mth.get_wb_data_o(), $time());
+            //print(msg);
+        end
     end
 endtask : pars_re
 

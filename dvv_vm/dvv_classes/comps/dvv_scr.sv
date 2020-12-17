@@ -12,6 +12,8 @@
 
 virtual class dvv_scr #(type item_type) extends dvv_bc;
 
+    const static string type_name = "dvv_scr";
+
     typedef dvv_scr #(item_type) scr_type;
 
     dvv_ap      #(item_type,scr_type)   item_ap;

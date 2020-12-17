@@ -35,7 +35,10 @@ class wb_mth extends dvv_bc;
 
     extern task wait_clk();
     extern task wait_reset();
-    extern task wait_ack();
+
+    extern task wait_read_cycle();
+    extern task wait_write_cycle();
+    
     extern task reset_signals();
     
 endclass : wb_mth
@@ -108,9 +111,23 @@ task wb_mth::wait_reset();
     @(negedge ctrl_vif.rst);
 endtask : wait_reset
 
-task wb_mth::wait_ack();
-    @(posedge ctrl_vif.wbs_ack_o);
-endtask : wait_ack
+task wb_mth::wait_read_cycle();
+    while(1)
+    begin
+        wait_clk();
+        if( ! ctrl_vif.wbs_we_i && ctrl_vif.wbs_stb_i && ctrl_vif.wbs_cyc_i && ctrl_vif.wbs_ack_o )
+            break;
+    end
+endtask : wait_read_cycle
+
+task wb_mth::wait_write_cycle();
+    while(1)
+    begin
+        wait_clk();
+        if(   ctrl_vif.wbs_we_i && ctrl_vif.wbs_stb_i && ctrl_vif.wbs_cyc_i && ctrl_vif.wbs_ack_o )
+            break;
+    end
+endtask : wait_write_cycle
 
 task wb_mth::reset_signals();
     ctrl_vif.wbs_adr_i = '0;

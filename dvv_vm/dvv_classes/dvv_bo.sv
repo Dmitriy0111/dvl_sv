@@ -12,6 +12,8 @@
 
 class dvv_bo;
 
+    const static string type_name = "dvv_bo";
+
     static int      run_drop = 0;
 
     string          name;
