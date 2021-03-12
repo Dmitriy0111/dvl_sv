@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_domain.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.12.15
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv domain class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_domain.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 15.12.2020
+*  Language        : SystemVerilog
+*  Description     : This is dvv domain class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_DOMAIN__SV

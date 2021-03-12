@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_phase.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.01.20
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv phase class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_phase.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 20.01.2020
+*  Language        : SystemVerilog
+*  Description     : This is dvv phase class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_PHASE__SV

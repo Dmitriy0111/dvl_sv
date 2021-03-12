@@ -1,10 +1,10 @@
 /* 
-*  File            :   i2c_ctb.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.11.26
-*  Language        :   SystemVerilog
-*  Description     :   This is testbench for i2c module
-*  Copyright(c)    :   2020 Vlasov D.V.
+*  File            : i2c_ctb.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 26.11.2020
+*  Language        : SystemVerilog
+*  Description     : This is testbench for i2c module
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 import i2c_test_pkg::*;

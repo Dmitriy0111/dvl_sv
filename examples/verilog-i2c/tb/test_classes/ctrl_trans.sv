@@ -1,10 +1,10 @@
 /*
-*  File            :   ctrl_trans.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.11.26
-*  Language        :   SystemVerilog
-*  Description     :   This is control transaction 
-*  Copyright(c)    :   2020 Vlasov D.V.
+*  File            : ctrl_trans.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 26.11.2020
+*  Language        : SystemVerilog
+*  Description     : This is control transaction 
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef CTRL_TRANS__SV

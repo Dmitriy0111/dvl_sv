@@ -29,7 +29,7 @@ sim: sim_gui
 ########################################################
 # simulation - Modelsim
 
-SIM_SCRIPT_NAME = run_i2c_test.tcl
+TEST_NAME ?= run_i2c_lattice
 
 VSIM_DIR = $(PWD)/sim_modelsim
 
@@ -37,7 +37,7 @@ VLIB_BIN = cd $(VSIM_DIR) && vlib
 VLOG_BIN = cd $(VSIM_DIR) && vlog
 VSIM_BIN = cd $(VSIM_DIR) && vsim
 
-VSIM_OPT_COMMON += -do $(RUN_DIR)/$(SIM_SCRIPT_NAME) -onfinish final
+VSIM_OPT_COMMON += -do $(RUN_DIR)/$(TEST_NAME).tcl -onfinish final
 
 VSIM_OPT_CMD     = -c
 VSIM_OPT_CMD    += -onfinish stop

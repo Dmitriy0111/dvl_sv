@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_bp.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.01.10
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv base port class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_bp.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 10.01.2020
+*  Language        : SystemVerilog
+*  Description     : This is dvv base port class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_BP__SV

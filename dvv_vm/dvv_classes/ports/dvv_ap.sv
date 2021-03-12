@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_ap.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.01.10
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv analysis port class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_ap.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 10.01.2020
+*  Language        : SystemVerilog
+*  Description     : This is dvv analysis port class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_AP__SV

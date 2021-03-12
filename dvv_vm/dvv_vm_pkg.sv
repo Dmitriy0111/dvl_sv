@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_vm_pkg.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2019.12.25
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv vm package
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_vm_pkg.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 25.12.2019
+*  Language        : SystemVerilog
+*  Description     : This is dvv vm package
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 package dvv_vm_pkg;

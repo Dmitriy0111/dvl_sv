@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_scb.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.01.17
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv scoreboard class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_scb.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 17.01.2020
+*  Language        : SystemVerilog
+*  Description     : This is dvv scoreboard class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_SCB__SV

@@ -1,10 +1,10 @@
 /*
-*  File            :   wb_cov.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.12.17
-*  Language        :   SystemVerilog
-*  Description     :   This is wishbone interface coverage unit 
-*  Copyright(c)    :   2020 Vlasov D.V.
+*  File            : wb_cov.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 17.12.2020
+*  Language        : SystemVerilog
+*  Description     : This is wishbone interface coverage unit 
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef WB_COV__SV

@@ -1,10 +1,10 @@
 /*
-*  File            :   clk_rst_if.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.11.27
-*  Language        :   SystemVerilog
-*  Description     :   This is clock and reset interface
-*  Copyright(c)    :   2020 Vlasov D.V.
+*  File            : clk_rst_if.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 27.11.2020
+*  Language        : SystemVerilog
+*  Description     : This is clock and reset interface
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 interface clk_rst_if

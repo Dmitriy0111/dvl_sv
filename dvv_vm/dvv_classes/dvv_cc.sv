@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_cc.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2019.12.25
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv creator class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_cc.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 25.12.2019
+*  Language        : SystemVerilog
+*  Description     : This is dvv creator class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_CC__SV

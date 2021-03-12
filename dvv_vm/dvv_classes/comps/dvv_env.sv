@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_env.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.01.09
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv enviroment class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_env.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 09.01.2020
+*  Language        : SystemVerilog
+*  Description     : This is dvv enviroment class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_ENV__SV

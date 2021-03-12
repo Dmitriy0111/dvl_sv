@@ -1,10 +1,10 @@
 /*
-*  File            :   dvv_gen.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2019.12.26
-*  Language        :   SystemVerilog
-*  Description     :   This is dvv monitor class
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : dvv_gen.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 26.12.2019
+*  Language        : SystemVerilog
+*  Description     : This is dvv monitor class
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef DVV_GEN__SV

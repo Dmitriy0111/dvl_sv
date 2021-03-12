@@ -1,10 +1,10 @@
 /*
-*  File            :   wb_if.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2020.11.26
-*  Language        :   SystemVerilog
-*  Description     :   This is wishbone interface
-*  Copyright(c)    :   2020 Vlasov D.V.
+*  File            : wb_if.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 26.11.2020
+*  Language        : SystemVerilog
+*  Description     : This is wishbone interface
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 interface wb_if

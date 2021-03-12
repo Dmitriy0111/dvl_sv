@@ -1,10 +1,10 @@
 #
-# File          :   run_i2c_test.tcl
-# Autor         :   Vlasov D.V.
-# Data          :   2020.12.15
-# Language      :   tcl
-# Description   :   This is script for running simulation process
-# Copyright(c)  :   2019 - 2020 Vlasov D.V.
+# File          : run_i2c_test.tcl
+# Autor         : Vlasov D.V.
+# Data          : 15.12.2020
+# Language      : tcl
+# Description   : This is script for running simulation process
+# Copyright(c)  : 2019 - 2021 Vlasov D.V.
 #
 
 # compile design rtl

@@ -1,10 +1,10 @@
 /*
-*  File            :   tr_gen.sv
-*  Autor           :   Vlasov D.V.
-*  Data            :   2019.12.26
-*  Language        :   SystemVerilog
-*  Description     :   This is transaction generator 
-*  Copyright(c)    :   2019 - 2020 Vlasov D.V.
+*  File            : tr_gen.sv
+*  Autor           : Vlasov D.V.
+*  Data            : 26.12.2019
+*  Language        : SystemVerilog
+*  Description     : This is transaction generator 
+*  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
 `ifndef TR_GEN__SV
