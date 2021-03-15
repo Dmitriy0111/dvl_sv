@@ -10,6 +10,7 @@
 package i2c_test_pkg;
 
     typedef virtual lat_if lat_vif;
+    typedef virtual i2c_if i2c_vif;
 
     import dvv_vm_pkg::*;
     `include "../../../../dvv_vm/dvv_macro.svh"
@@ -25,6 +26,8 @@ package i2c_test_pkg;
     `include "../test_classes/gen/tr_dgen.sv"
 
     `include "../test_classes/lat/lat_env.sv"
+    
+    `include "../test_classes/i2c_mem/i2c_mem.sv"
 
     `include "../test_classes/tests/i2c_test.sv"
 

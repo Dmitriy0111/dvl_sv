@@ -19,14 +19,6 @@ class ctrl_trans extends dvv_item;
 
     int     tr_num = 0;
 
-    constraint data_tr_c {
-        data inside { [0 : 2**8-1] };
-    }
-
-    constraint data_freq_c {
-        data inside { 40, 50, 60, 70, 100 };
-    }
-
     extern function new(string name = "", dvv_bc parent = null);
 
     extern task print_tr();

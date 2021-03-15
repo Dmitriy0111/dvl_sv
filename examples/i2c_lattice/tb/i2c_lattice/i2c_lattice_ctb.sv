@@ -80,13 +80,14 @@ module i2c_lattice_ctb;
 
     initial
     begin
-        #100us;
+        #200us;
         $stop;
     end
 
     initial
     begin
         dvv_res_db#( virtual lat_if )::set_res_db( "lat_if_0" , lat_if_0 );
+        dvv_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
         
         run_test("");
     end
