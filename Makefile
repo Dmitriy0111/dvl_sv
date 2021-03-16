@@ -31,7 +31,7 @@ sim: sim_gui
 
 TEST_NAME ?= run_i2c_lattice
 
-VSIM_DIR = $(PWD)/sim_modelsim1
+VSIM_DIR = $(PWD)/sim_modelsim
 
 VLIB_BIN = cd $(VSIM_DIR) && vlib
 VLOG_BIN = cd $(VSIM_DIR) && vlog

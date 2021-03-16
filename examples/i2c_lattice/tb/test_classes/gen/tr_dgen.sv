@@ -55,7 +55,6 @@ task tr_dgen::run();
     begin
         @(posedge vif.rst);
         
-        item.tr_num++;
         for(; !$feof(fp) ;)
         begin
             $fscanf(fp,"%s %h %h %h", cmd, addr, data_mask, comp);
@@ -80,7 +79,7 @@ task tr_dgen::run();
                             item_sock.wait_sock();
                         join
                         if( ( resp_item.get_data() & data_mask ) == comp )
-                        break;
+                            break;
                     end
                 end
             endcase

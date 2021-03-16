@@ -27,8 +27,8 @@ function wb_agt::new(string name = "", dvv_bc parent = null);
 endfunction : new
 
 task wb_agt::build();
-    drv = wb_drv::create::create_obj("wb_drv", this);
     mon = wb_mon::create::create_obj("wb_mon", this);
+    drv = wb_drv::create::create_obj("wb_drv", this);
 endtask : build
 
 `endif // WB_AGT__SV

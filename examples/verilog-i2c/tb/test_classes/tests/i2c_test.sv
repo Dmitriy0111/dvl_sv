@@ -17,6 +17,8 @@ class i2c_test extends dvv_test;
 
     dvv_bc                  env;
 
+    dvv_bc                  i2c_mem_;
+
     extern function new(string name = "", dvv_bc parent = null);
 
     extern task build();
@@ -30,6 +32,7 @@ endfunction : new
 task i2c_test::build();
     super.build();
     env = wb_env::create::create_obj("i2c_env", this);
+    i2c_mem_ = i2c_mem#(8'h42)::create::create_obj("i2c_mem_",this);
 endtask : build
 
 `endif // I2C_TEST__SV

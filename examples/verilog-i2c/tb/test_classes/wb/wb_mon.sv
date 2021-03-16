@@ -78,7 +78,7 @@ task wb_mon::pars_re();
             item.set_we_re(1'b0);
             item_aep.write(item);
             $swrite(msg,"READ_TR  addr = 0x%h, data = 0x%h at time %tps\n", mth.get_wb_addr(), mth.get_wb_data_o(), $time());
-            //print(msg);
+            print(msg);
         end
     end
 endtask : pars_re
