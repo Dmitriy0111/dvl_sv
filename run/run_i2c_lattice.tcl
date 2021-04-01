@@ -13,6 +13,7 @@ vlog    ../examples/i2c_lattice/FPGA-RD-02201-1-0-Generic-Soft-I2C-Master-Contro
 # compile dvv_vm classes pkg
 vlog -sv ../dvv_vm/*.*v
 # compile verification components
+vlog -sv ../interfaces/*.*v
 vlog -sv ../examples/i2c_lattice/tb/if/*.*v
 vlog -sv ../examples/i2c_lattice/tb/i2c_lattice/i2c_test_pkg.sv 
 # compile testbench

@@ -27,7 +27,7 @@ package i2c_test_pkg;
 
     `include "../test_classes/lat/lat_env.sv"
     
-    `include "../test_classes/i2c_mem/i2c_mem.sv"
+    `include "../../../../models/i2c_mem/i2c_mem.sv"
 
     `include "../test_classes/tests/i2c_test.sv"
 

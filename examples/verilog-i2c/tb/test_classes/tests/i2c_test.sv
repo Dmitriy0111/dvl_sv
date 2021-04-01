@@ -17,7 +17,7 @@ class i2c_test extends dvv_test;
 
     dvv_bc                  env;
 
-    dvv_bc                  i2c_mem_;
+    i2c_mem                 i2c_mem_;
 
     extern function new(string name = "", dvv_bc parent = null);
 

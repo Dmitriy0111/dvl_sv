@@ -8,11 +8,12 @@
 #
 
 # compile design rtl
-vlog     ../examples/verilog-i2c/verilog-i2c_rtl/rtl/*.*v
+vlog     ../examples/verilog-i2c/verilog-i2c/rtl/*.*v
 
 # compile dvv_vm classes
 vlog -sv ../dvv_vm/*.*v
 # compile verification components
+vlog -sv ../interfaces/*.*v
 vlog -sv ../examples/verilog-i2c/tb/if/*.*v
 vlog -sv ../examples/verilog-i2c/tb/verilog-i2c/i2c_test_pkg.sv 
 # compile testbench
@@ -31,7 +32,7 @@ add wave -position insertpoint sim:/i2c_ctb/i2c_if_0/*
 
 run -all
 
-coverage report -detail -cvg -directive -config -comments -file fcover_report.txt -noa /i2c_test_pkg/wb_cov/cov_presc
+#coverage report -detail -cvg -directive -config -comments -file fcover_report.txt -noa /i2c_test_pkg/wb_cov/cov_presc
 
 wave zoom full
 
