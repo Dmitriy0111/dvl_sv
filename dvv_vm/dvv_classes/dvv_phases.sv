@@ -37,8 +37,9 @@ endfunction : create
 
 task dvv_build_phase::exec();
     print("Build phase start\n");
-    test.build();
-    test.test_comps = test.child_l;
+    //test.build();
+    //test.test_comps = test.child_l;
+    test.test_comps.push_back(test);
     foreach(test.test_comps[i])
     begin
         test.test_comps[i].build();

@@ -80,7 +80,6 @@ function i2c_mem::new(string name = "", dvv_bc parent = null);
 endfunction : new
 
 task i2c_mem::build();
-    
     if( !dvv_res_db#(i2c_vif)::get_res_db("i2c_if_0",i2c_vif_) )
         $fatal();
 endtask : build
