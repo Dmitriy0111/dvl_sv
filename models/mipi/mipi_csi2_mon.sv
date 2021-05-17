@@ -1,20 +1,20 @@
 /*
-*  File            : mipi_dsi_mon.sv
+*  File            : mipi_csi2_mon.sv
 *  Autor           : Vlasov D.V.
-*  Data            : 11.05.2021
+*  Data            : 17.05.2021
 *  Language        : SystemVerilog
-*  Description     : This is mipi dsi monitor
+*  Description     : This is mipi csi2 monitor
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef MIPI_DSI_MON__SV
-`define MIPI_DSI_MON__SV
+`ifndef MIPI_CSI2_MON__SV
+`define MIPI_CSI2_MON__SV
 
 timeprecision   1ps;
 timeunit        1ps;
 
-class mipi_dsi_mon extends mipi_base_mon;
-    `OBJ_BEGIN( mipi_dsi_mon )
+class mipi_csi2_mon extends mipi_base_mon;
+    `OBJ_BEGIN( mipi_csi2_mon )
 
     extern function new(string name = "", dvv_bc parent = null);
 
@@ -25,17 +25,17 @@ class mipi_dsi_mon extends mipi_base_mon;
 
     extern task analysis();
 
-endclass : mipi_dsi_mon
+endclass : mipi_csi2_mon
 
-function mipi_dsi_mon::new(string name = "", dvv_bc parent = null);
+function mipi_csi2_mon::new(string name = "", dvv_bc parent = null);
     super.new(name,parent);
     item_aep = new("item_aep");
     $timeformat(-12, 3, " ps", 10);
 endfunction : new
 
-task mipi_dsi_mon::build();
+task mipi_csi2_mon::build();
     super.build();
-    
+
     if( !dvv_res_db#(mipi_vif)::get_res_db("mipi_if_0", vif) )
         $fatal();
     if( !dvv_res_db#(int)::get_res_db("line_num", line_num) )
@@ -47,7 +47,7 @@ task mipi_dsi_mon::build();
         fd = $fopen( { name , ".hex" },"w");
 endtask : build
 
-task mipi_dsi_mon::run();
+task mipi_csi2_mon::run();
     fork
         forever
         begin
@@ -63,7 +63,7 @@ task mipi_dsi_mon::run();
     join_none
 endtask : run
 
-task mipi_dsi_mon::main_rec();
+task mipi_csi2_mon::main_rec();
     fork
         begin
             rec_proc = process::self();
@@ -82,7 +82,7 @@ task mipi_dsi_mon::main_rec();
     join_any
 endtask : main_rec
 
-task mipi_dsi_mon::analysis();
+task mipi_csi2_mon::analysis();
     case ( rec_s_ )
         wait_header:
         begin
@@ -101,10 +101,10 @@ task mipi_dsi_mon::analysis();
 
                 pkt_type_s = "";
 
-                foreach( mipi_dsi_cmds[i] )
-                    if( ( mipi_dsi_cmds[i].val & 8'h3F ) == ( item.mipi_h.ptype & 8'h3F ) ) begin
-                        pkt_type_s = mipi_dsi_cmds[i].name;
-                        item.mipi_h.psize = mipi_dsi_cmds[i].pkt_size;
+                foreach( mipi_csi2_cmds[i] )
+                    if( ( mipi_csi2_cmds[i].val & 8'h3F ) == ( item.mipi_h.ptype & 8'h3F ) ) begin
+                        pkt_type_s = mipi_csi2_cmds[i].name;
+                        item.mipi_h.psize = mipi_csi2_cmds[i].pkt_size;
                         break;
                     end
 
@@ -122,8 +122,7 @@ task mipi_dsi_mon::analysis();
                 // Generate info
                 $swrite(
                             msg,
-                            "<%s> [0x%8h][0x%8h] Packet: type:<%2h> size:<%4h> ecc:<%2h> fecc:<%2h> ecc_status:<%s> <%s> at time %t\n",
-                            this.name,
+                            "[0x%8h][0x%8h] Packet: type:<%2h> size:<%4h> ecc:<%2h> fecc:<%2h> ecc_status:<%s> <%s> at time %t\n",
                             sot_num,
                             pkt_num,
                             item.mipi_h.ptype,
@@ -165,8 +164,7 @@ task mipi_dsi_mon::analysis();
 
                 $swrite(
                             msg,
-                            "<%s> [0x%8h][0x%8h] Packet: calc crc<%2h>: rec crc:<%2h> status:<%s> at time %t\n",
-                            this.name,
+                            "[0x%8h][0x%8h] Packet: calc crc<%2h>: rec crc:<%2h> status:<%s> at time %t\n",
                             sot_num,
                             pkt_num,
                             calc_crc,
@@ -175,11 +173,9 @@ task mipi_dsi_mon::analysis();
                             $time()
                         );
                 print(msg);
-
-                item_aep.write(item);
             end
         end
     endcase
 endtask : analysis
 
-`endif // MIPI_DSI_MON__SV
+`endif // MIPI_CSI2_MON__SV

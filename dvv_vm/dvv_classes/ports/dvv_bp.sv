@@ -22,7 +22,7 @@ virtual class dvv_bp #(type item_type);
 
     extern task connect(bp_type bp_item);
 
-    pure virtual function void write(item_type item);
+    pure virtual function void write(ref item_type item);
 
 endclass : dvv_bp
 

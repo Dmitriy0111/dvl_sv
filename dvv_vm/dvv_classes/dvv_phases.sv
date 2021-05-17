@@ -37,8 +37,7 @@ endfunction : create
 
 task dvv_build_phase::exec();
     print("Build phase start\n");
-    //test.build();
-    //test.test_comps = test.child_l;
+
     test.test_comps.push_back(test);
     foreach(test.test_comps[i])
     begin
@@ -78,7 +77,6 @@ endfunction : create
 
 task dvv_connect_phase::exec();
     print("Connect phase start\n");
-    test.connect();
     foreach(test.test_comps[i])
         test.test_comps[i].connect();
     print("Connect phase complete\n");
