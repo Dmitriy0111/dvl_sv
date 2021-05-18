@@ -34,7 +34,7 @@ task dvv_root::run_test(string name = "");
     test_name = name;
     if( test_name != "" )
         test = type_bc[test_name].create_obj(test_name,this);
-    else if( $value$plusargs("DVV_TEST=%s", test_name) ) 
+    else if( $value$plusargs("DVV_TEST_NAME=%s", test_name) ) 
         test = type_bc[test_name].create_obj(test_name,this);
     else
         $fatal;

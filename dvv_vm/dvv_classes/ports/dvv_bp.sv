@@ -10,7 +10,7 @@
 `ifndef DVV_BP__SV
 `define DVV_BP__SV
 
-virtual class dvv_bp #(type item_type);
+virtual class dvv_bp #(type item_type = int);
 
     const static string type_name = "dvv_bp";
 

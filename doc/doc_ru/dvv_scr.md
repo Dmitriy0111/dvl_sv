@@ -1,0 +1,76 @@
+# dvv_scr (subscriber class)
+
+Данный файл содержит описание класса подписчика на событие.
+
+## Поля и функции/задачи класса  
+
+Класс содержит следующие поля:
+| Имя          | Тип                          | Описание                                                          |
+| ------------ | ---------------------------- | ----------------------------------------------------------------- |
+| item_ap      | dvv_ap #(item_type,scr_type) | Порт для приёма сообщений от analysis export                      |
+
+Класс содержит следующие функции/задачи:
+| Имя       | Описание                                |
+| --------- | --------------------------------------- |
+| new       | Конструктор класса                      |
+| write     | Функция вызываемая при приёме сообщения |
+
+Кроме этого данный класс также содержит поля и функции/задачи dvv_bc класса.
+
+## Использование
+
+Данный класс используется через наследование. Экземпляр потомка класса служит для приёма сообщений от внешних источников через функцию write, которую необходимо обязательно переопределить. Использование потомка данного класса с несколькими разными типами данных портов запрещено, так как функция write имеет только один тип переменной. В случае необходимости использования нескольких разных типов данных у портов необходимо воспользоваться макросами.
+```Verilog
+// Example of using dvv_ap_decl macro:
+
+`ifndef EXAMPLE__SV
+`define EXAMPLE__SV
+
+`dvv_ap_decl(_oth_1)
+`dvv_ap_decl(_oth_2)
+
+class example extends dvv_scr #(int);
+    `OBJ_BEGIN( example )
+
+    typedef example example_t;
+
+    int                                 item_0;
+    byte                                item_1;
+    string                              item_2;
+    
+    dvv_ap_oth_1    #(byte,example_t)   ex_ap_1;
+    dvv_ap_oth_2    #(string,example_t) ex_ap_2;
+
+    extern function new(string name = "", dvv_bc parent = null);
+
+    extern function void write(int item);
+
+    extern function void write_oth_1(int item);
+    extern function void write_oth_2(int item);
+    
+endclass : example
+
+function example::new(string name = "", dvv_bc parent = null);
+    super.new(name,parent);
+    item_ap = new(this,"item_ap");
+    ex_ap_1 = new(this,"ex_ap_1");
+    ex_ap_2 = new(this,"ex_ap_2");
+endfunction : new
+
+function void example::write(int item);
+    item_0 = item;
+    $info("Received item = %h", this.item_0);
+endfunction : write
+
+function void example::write_oth_1(byte item);
+    item_1 = item;
+    $info("Received item = %h", this.item_1);
+endfunction : write_oth_1
+
+function void example::write_oth_2(string item);
+    item_2 = item;
+    $info("Received item = %s", this.item_2);
+endfunction : write_oth_2
+
+`endif // EXAMPLE__SV
+```

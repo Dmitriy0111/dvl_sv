@@ -10,7 +10,7 @@
 `ifndef DVV_AEP__SV
 `define DVV_AEP__SV
 
-class dvv_aep #(type item_type) extends dvv_bp #(item_type);
+class dvv_aep #(type item_type = int) extends dvv_bp #(item_type);
 
     const static string type_name = "dvv_aep";
 

@@ -19,7 +19,7 @@ vlog -sv ../examples/i2c_lattice/tb/i2c_lattice/i2c_test_pkg.sv
 # compile testbench
 vlog -sv ../examples/i2c_lattice/tb/i2c_lattice/i2c_lattice_ctb.sv
 
-vsim -novopt work.i2c_lattice_ctb +DVV_TEST=i2c_test
+vsim -novopt work.i2c_lattice_ctb +DVV_TEST_NAME=i2c_test
 
 add wave -divider  "testbench signals"
 add wave -position insertpoint sim:/i2c_lattice_ctb/*

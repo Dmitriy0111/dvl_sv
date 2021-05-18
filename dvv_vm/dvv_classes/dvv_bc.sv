@@ -29,6 +29,7 @@ class dvv_bc extends dvv_bo;
     extern virtual task connect();
     extern virtual task run();
     extern virtual task clean_up();
+    extern virtual task report();
 
     extern task print_map();
     extern task print_childs();
@@ -63,6 +64,9 @@ endtask : run
 
 task dvv_bc::clean_up();
 endtask : clean_up
+
+task dvv_bc::report();
+endtask : report
 
 task dvv_bc::print_map();
     for(int i = 0 ; i < level ; i++)

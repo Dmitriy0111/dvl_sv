@@ -10,7 +10,7 @@
 `ifndef DVV_SCR__SV
 `define DVV_SCR__SV
 
-virtual class dvv_scr #(type item_type) extends dvv_bc;
+virtual class dvv_scr #(type item_type = int) extends dvv_bc;
 
     const static string type_name = "dvv_scr";
 

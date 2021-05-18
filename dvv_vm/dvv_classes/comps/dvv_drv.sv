@@ -10,7 +10,7 @@
 `ifndef DVV_DRV__SV
 `define DVV_DRV__SV
 
-class dvv_drv #(type item_type, resp_type = item_type) extends dvv_bc;
+class dvv_drv #(type item_type = int, resp_type = item_type) extends dvv_bc;
 
     const static string type_name = "dvv_drv";
 

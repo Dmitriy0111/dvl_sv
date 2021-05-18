@@ -10,7 +10,7 @@
 `ifndef DVV_AP__SV
 `define DVV_AP__SV
 
-class dvv_ap #(type item_type, type scr_type) extends dvv_bp #(item_type);
+class dvv_ap #(type item_type = int, type scr_type) extends dvv_bp #(item_type);
 
     const static string type_name = "dvv_ap";
 
