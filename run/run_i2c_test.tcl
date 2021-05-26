@@ -10,8 +10,8 @@
 # compile design rtl
 vlog     ../examples/verilog-i2c/verilog-i2c/rtl/*.*v
 
-# compile dvv_vm classes
-vlog -sv ../dvv_vm/*.*v
+# compile dvl_sv classes
+vlog -sv ../dvl_sv/*.*v
 # compile verification components
 vlog -sv ../interfaces/*.*v
 vlog -sv ../examples/verilog-i2c/tb/if/*.*v
@@ -19,7 +19,7 @@ vlog -sv ../examples/verilog-i2c/tb/verilog-i2c/i2c_test_pkg.sv
 # compile testbench
 vlog -sv ../examples/verilog-i2c/tb/verilog-i2c/i2c_ctb.*v ../examples/verilog-i2c/tb/verilog-i2c/i2c_pin.*v
 
-vsim -novopt work.i2c_ctb +DVV_TEST_NAME=i2c_test
+vsim -novopt work.i2c_ctb +DVL_TEST_NAME=i2c_test
 
 add wave -divider  "testbench signals"
 add wave -position insertpoint sim:/i2c_ctb/*

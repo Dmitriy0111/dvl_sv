@@ -13,7 +13,7 @@
 timeprecision   1ps;
 timeunit        1ps;
 
-class mipi_base_mon extends dvv_mon #(mipi_item);
+class mipi_base_mon extends dvl_mon #(mipi_item);
     `OBJ_BEGIN( mipi_base_mon )
 
     // virtual interface
@@ -55,7 +55,7 @@ class mipi_base_mon extends dvv_mon #(mipi_item);
     bit     [15 : 0]    crc16_table [256];
     bit     [15 : 0]    crc16_polynome = 16'h8408;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task run();
@@ -82,7 +82,7 @@ class mipi_base_mon extends dvv_mon #(mipi_item);
 
 endclass : mipi_base_mon
 
-function mipi_base_mon::new(string name = "", dvv_bc parent = null);
+function mipi_base_mon::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

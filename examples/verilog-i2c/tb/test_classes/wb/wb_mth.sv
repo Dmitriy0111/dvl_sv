@@ -10,12 +10,12 @@
 `ifndef WB_MTH__SV
 `define WB_MTH__SV
 
-class wb_mth extends dvv_bc;
+class wb_mth extends dvl_bc;
     `OBJ_BEGIN( wb_mth )
 
     wb_vif      ctrl_vif;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task set_wb_addr     (logic [31 : 0] val);
     extern task set_wb_data_i   (logic [31 : 0] val);
@@ -43,7 +43,7 @@ class wb_mth extends dvv_bc;
     
 endclass : wb_mth
 
-function wb_mth::new(string name = "", dvv_bc parent = null);
+function wb_mth::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

@@ -1,14 +1,14 @@
-# dvv_phase (phase class)
+# dvl_phase (phase class)
 Данный файл содержит описание базового класса фазы выпонения.
 
 Заголовок:
 ```Verilog
-class dvv_phase extends dvv_bc;
+class dvl_phase extends dvl_bc;
 ```
 
 ## Поля и функции/задачи класса  
 
-Данный класс наследует поля и функции/задачи из базового класса компонентов [dvv_bc.md](dvv_bc.md).
+Данный класс наследует поля и функции/задачи из базового класса компонентов [dvl_bc.md](dvl_bc.md).
 
 ### Поля:
 
@@ -16,7 +16,7 @@ class dvv_phase extends dvv_bc;
 
 | Поле      | Значение      |
 | --------- | ------------- |
-| type_name | "dvv_phase"   |
+| type_name | "dvl_phase"   |
 
 ### Функции/Задачи:
 Класс содержит следующие функции/задачи:
@@ -28,18 +28,18 @@ class dvv_phase extends dvv_bc;
 ### Описание функций/задач:
 
 #### new
-Конструктор класса для создания экземпляра dvv_phase.
+Конструктор класса для создания экземпляра dvl_phase.
 
 Заголовок:
 ```Verilog
-function new(string name = "", dvv_bc parent = null);
+function new(string name = "", dvl_bc parent = null);
 ```
 
 Аргументы:
 | Имя       | Тип       | Описание                  |
 | --------- | --------- | ------------------------- |
 | name      | string    | Имя компонента            |
-| parent    | dvv_bc    | Экземпляр класса родителя |
+| parent    | dvl_bc    | Экземпляр класса родителя |
 
 #### exec
 Задача для исполнения фазы.

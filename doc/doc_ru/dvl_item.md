@@ -1,14 +1,14 @@
-# dvv_item (item class)
+# dvl_item (item class)
 Данный файл содержит описание класса служащего данными для взаимодействия компонентов теста.
 
 Заголовок:
 ```Verilog
-class dvv_item extends dvv_bo;
+class dvl_item extends dvl_bo;
 ```
 
 ## Поля и функции/задачи класса
 
-Данный класс наследует поля и функции/задачи из базового объекта [dvv_bo.md](dvv_bo.md).
+Данный класс наследует поля и функции/задачи из базового объекта [dvl_bo.md](dvl_bo.md).
 
 ### Поля:
 
@@ -16,7 +16,7 @@ class dvv_item extends dvv_bo;
 
 | Поле      | Значение      |
 | --------- | ------------- |
-| type_name | "dvv_item"    |
+| type_name | "dvl_item"    |
 
 ### Функции/задачи:
 | Имя       | Описание              |
@@ -26,15 +26,15 @@ class dvv_item extends dvv_bo;
 ### Описание функций/задач:
 
 #### new
-Конструктор класса для создания экземпляра dvv_item.
+Конструктор класса для создания экземпляра dvl_item.
 
 Заголовок:
 ```Verilog
-function new(string name = "", dvv_bc parent = null);
+function new(string name = "", dvl_bc parent = null);
 ```
 
 Аргументы:
 | Имя       | Тип       | Описание                  |
 | --------- | --------- | ------------------------- |
 | name      | string    | Имя компонента            |
-| parent    | dvv_bc    | Экземпляр класса родителя |
+| parent    | dvl_bc    | Экземпляр класса родителя |

@@ -1,18 +1,18 @@
 /*
-*  File            : dvv_ap.sv
+*  File            : dvl_ap.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 10.01.2020
 *  Language        : SystemVerilog
-*  Description     : This is dvv analysis port class
+*  Description     : This is dvl analysis port class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_AP__SV
-`define DVV_AP__SV
+`ifndef DVL_AP__SV
+`define DVL_AP__SV
 
-class dvv_ap #(type item_type = int, type scr_type) extends dvv_bp #(item_type);
+class dvl_ap #(type item_type = int, type scr_type) extends dvl_bp #(item_type);
 
-    const static string type_name = "dvv_ap";
+    const static string type_name = "dvl_ap";
 
     scr_type        scr;
 
@@ -20,15 +20,15 @@ class dvv_ap #(type item_type = int, type scr_type) extends dvv_bp #(item_type);
 
     extern function void write(ref item_type item);
     
-endclass : dvv_ap
+endclass : dvl_ap
 
-function dvv_ap::new(scr_type scr = null, string p_name = "");
+function dvl_ap::new(scr_type scr = null, string p_name = "");
     this.scr = scr;
     this.p_name = p_name != "" ? p_name : "unnamed_ap";
 endfunction : new
 
-function void dvv_ap::write(ref item_type item);
+function void dvl_ap::write(ref item_type item);
     this.scr.write(item);
 endfunction : write
 
-`endif // DVV_AP__SV
+`endif // DVL_AP__SV

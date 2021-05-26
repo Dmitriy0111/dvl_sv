@@ -8,7 +8,7 @@
 */
 
 import i2c_test_pkg::*;
-import dvv_vm_pkg::*;
+import dvl_sv_pkg::*;
 
 module i2c_ctb();
 
@@ -106,11 +106,11 @@ module i2c_ctb();
     begin
         # start_del;
 
-        dvv_res_db#( virtual wb_if )::set_res_db( "wb_if_0" , wb_if_0 );
-        dvv_res_db#( virtual clk_rst_if )::set_res_db( "cr_if_0" , cr_if_0 );
-        dvv_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
+        dvl_res_db#( virtual wb_if )::set_res_db( "wb_if_0" , wb_if_0 );
+        dvl_res_db#( virtual clk_rst_if )::set_res_db( "cr_if_0" , cr_if_0 );
+        dvl_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
         
-        dvv_res_db#( integer )::set_res_db( "rep_number" , repeat_n );
+        dvl_res_db#( integer )::set_res_db( "rep_number" , repeat_n );
 
         run_test("");
     end

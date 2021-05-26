@@ -10,7 +10,7 @@
 `ifndef LAT_DRV__SV
 `define LAT_DRV__SV
 
-class lat_drv extends dvv_drv #(ctrl_trans);
+class lat_drv extends dvl_drv #(ctrl_trans);
     `OBJ_BEGIN( lat_drv )
 
     ctrl_trans      item;
@@ -20,7 +20,7 @@ class lat_drv extends dvv_drv #(ctrl_trans);
 
     lat_mth         mth;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task write_reg();
     extern task read_reg();
@@ -30,12 +30,12 @@ class lat_drv extends dvv_drv #(ctrl_trans);
     
 endclass : lat_drv
 
-function lat_drv::new(string name = "", dvv_bc parent = null);
+function lat_drv::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
 task lat_drv::build();
-    if( !dvv_res_db#(lat_vif)::get_res_db("lat_if_0",ctrl_vif) )
+    if( !dvl_res_db#(lat_vif)::get_res_db("lat_if_0",ctrl_vif) )
         $fatal();
 
     mth = lat_mth::create::create_obj("lat_drv_mth", this);

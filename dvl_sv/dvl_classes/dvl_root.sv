@@ -1,40 +1,40 @@
 /*
-*  File            : dvv_root.sv
+*  File            : dvl_root.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 15.12.2020
 *  Language        : SystemVerilog
-*  Description     : This is dvv root class
+*  Description     : This is dvl root class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_ROOT__SV
-`define DVV_ROOT__SV
+`ifndef DVL_ROOT__SV
+`define DVL_ROOT__SV
 
-class dvv_root extends dvv_bc;
+class dvl_root extends dvl_bc;
 
-    const static string type_name = "dvv_root";
+    const static string type_name = "dvl_root";
 
-    dvv_domain  domain;
+    dvl_domain  domain;
     
     string      test_name;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern virtual task run_test(string name = "");
     
-endclass : dvv_root
+endclass : dvl_root
 
-function dvv_root::new(string name = "", dvv_bc parent = null);
+function dvl_root::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     domain = new("domain",this);
     fp = $fopen("sim.log","w");
 endfunction : new
 
-task dvv_root::run_test(string name = "");
+task dvl_root::run_test(string name = "");
     test_name = name;
     if( test_name != "" )
         test = type_bc[test_name].create_obj(test_name,this);
-    else if( $value$plusargs("DVV_TEST_NAME=%s", test_name) ) 
+    else if( $value$plusargs("dvl_TEST_NAME=%s", test_name) ) 
         test = type_bc[test_name].create_obj(test_name,this);
     else
         $fatal;
@@ -45,4 +45,4 @@ task dvv_root::run_test(string name = "");
 
 endtask : run_test
 
-`endif // DVV_ROOT__SV
+`endif // DVL_ROOT__SV

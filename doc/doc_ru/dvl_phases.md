@@ -1,37 +1,37 @@
-# dvv_phases (phases classes (build, connect, run, cleanup, report))
+# dvl_phases (phases classes (build, connect, run, cleanup, report))
 ƒанный файл содержит описание классов фаз выполнени€ теста.
 
 «аголовок:
 ```Verilog
-class dvv_build_phase extends dvv_phase;
-class dvv_connect_phase extends dvv_phase;
-class dvv_run_phase extends dvv_phase;
-class dvv_clean_up_phase extends dvv_phase;
-class dvv_report_phase extends dvv_phase;
+class dvl_build_phase extends dvl_phase;
+class dvl_connect_phase extends dvl_phase;
+class dvl_run_phase extends dvl_phase;
+class dvl_clean_up_phase extends dvl_phase;
+class dvl_report_phase extends dvl_phase;
 ```
 
 ## ѕол€ и функции/задачи класса  
 
-ƒанный класс наследует пол€ и функции/задачи из базового класса фазы [dvv_phase.md](dvv_phase.md).
+ƒанный класс наследует пол€ и функции/задачи из базового класса фазы [dvl_phase.md](dvl_phase.md).
 
 ### ѕол€:
 | »м€       | “ип                               | ќписание                          |
 | --------- | --------------------------------- | --------------------------------- |
-| inst      | local static dvv_build_phase      | Ёкземпл€р фазы dvv_build_phase    |
-| inst      | local static dvv_connect_phase    | Ёкземпл€р фазы dvv_connect_phase  |
-| inst      | local static dvv_run_phase        | Ёкземпл€р фазы dvv_run_phase      |
-| inst      | local static dvv_clean_up_phase   | Ёкземпл€р фазы dvv_clean_up_phase |
-| inst      | local static dvv_report_phase     | Ёкземпл€р фазы dvv_report_phase   |
+| inst      | local static dvl_build_phase      | Ёкземпл€р фазы dvl_build_phase    |
+| inst      | local static dvl_connect_phase    | Ёкземпл€р фазы dvl_connect_phase  |
+| inst      | local static dvl_run_phase        | Ёкземпл€р фазы dvl_run_phase      |
+| inst      | local static dvl_clean_up_phase   | Ёкземпл€р фазы dvl_clean_up_phase |
+| inst      | local static dvl_report_phase     | Ёкземпл€р фазы dvl_report_phase   |
 
 #### «начение некоторых полей:
 
 | ѕоле      | «начение              |
 | --------- | --------------------- |
-| type_name | "dvv_build_phase"     |
-| type_name | "dvv_connect_phase"   |
-| type_name | "dvv_run_phase"       |
-| type_name | "dvv_clean_up_phase"  |
-| type_name | "dvv_report_phase"    |
+| type_name | "dvl_build_phase"     |
+| type_name | "dvl_connect_phase"   |
+| type_name | "dvl_run_phase"       |
+| type_name | "dvl_clean_up_phase"  |
+| type_name | "dvl_report_phase"    |
 
 ### ‘ункции/«адачи:
  ласс содержит следующие функции/задачи:
@@ -44,36 +44,36 @@ class dvv_report_phase extends dvv_phase;
 ### ќписание функций/задач:
 
 #### new
- онструктор класса дл€ создани€ экземпл€ра dvv_build_phase/dvv_connect_phase/dvv_run_phase/dvv_clean_up_phase/dvv_report_phase.
+ онструктор класса дл€ создани€ экземпл€ра dvl_build_phase/dvl_connect_phase/dvl_run_phase/dvl_clean_up_phase/dvl_report_phase.
 
 «аголовок:
 ```Verilog
-function new(string name = "", dvv_bc parent = null);
+function new(string name = "", dvl_bc parent = null);
 ```
 
 јргументы:
 | »м€       | “ип       | ќписание                  |
 | --------- | --------- | ------------------------- |
 | name      | string    | »м€ компонента            |
-| parent    | dvv_bc    | Ёкземпл€р класса родител€ |
+| parent    | dvl_bc    | Ёкземпл€р класса родител€ |
 
 #### create
-«адача дл€ создани€ экземпл€ра inst dvv_build_phase/dvv_connect_phase/dvv_run_phase/dvv_clean_up_phase/dvv_report_phase.
+«адача дл€ создани€ экземпл€ра inst dvl_build_phase/dvl_connect_phase/dvl_run_phase/dvl_clean_up_phase/dvl_report_phase.
 
 «аголовок:
 ```Verilog
-function dvv_build_phase::create(string name = "", dvv_bc parent = null);
-function dvv_connect_phase::create(string name = "", dvv_bc parent = null);
-function dvv_run_phase::create(string name = "", dvv_bc parent = null);
-function dvv_clean_up_phase::create(string name = "", dvv_bc parent = null);
-function dvv_report_phase::create(string name = "", dvv_bc parent = null);
+function dvl_build_phase::create(string name = "", dvl_bc parent = null);
+function dvl_connect_phase::create(string name = "", dvl_bc parent = null);
+function dvl_run_phase::create(string name = "", dvl_bc parent = null);
+function dvl_clean_up_phase::create(string name = "", dvl_bc parent = null);
+function dvl_report_phase::create(string name = "", dvl_bc parent = null);
 ```
 
 јргументы:
 | »м€       | “ип       | ќписание                  |
 | --------- | --------- | ------------------------- |
 | name      | string    | »м€ компонента            |
-| parent    | dvv_bc    | Ёкземпл€р класса родител€ |
+| parent    | dvl_bc    | Ёкземпл€р класса родител€ |
 
 #### exec
 «адача дл€ исполнени€ фазы.

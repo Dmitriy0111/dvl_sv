@@ -1,9 +1,9 @@
-# dvv_gen (generator class)
+# dvl_gen (generator class)
 Данный файл содержит описание базового класса генератора тестовых воздействий.
 
 Заголовок:
 ```Verilog
-class dvv_gen #(type item_type, resp_type = item_type) extends dvv_bc;
+class dvl_gen #(type item_type, resp_type = item_type) extends dvl_bc;
 ```
 
 ## Параметры класса:
@@ -15,20 +15,20 @@ class dvv_gen #(type item_type, resp_type = item_type) extends dvv_bc;
 
 ## Поля и функции/задачи класса  
 
-Данный класс наследует поля и функции/задачи из базового класса компонентов [dvv_bc.md](dvv_bc.md).
+Данный класс наследует поля и функции/задачи из базового класса компонентов [dvl_bc.md](dvl_bc.md).
 
 ### Поля:
 
 | Имя       | Тип                   | Описание                              |
 | --------- | --------------------- | ------------------------------------- |
-| item_sock | dvv_sock #(item_type) | Прямой канал обмена через dvv_sock    |
-| resp_sock | dvv_sock #(resp_type) | Возвратый канал обмена через dvv_sock |
+| item_sock | dvl_sock #(item_type) | Прямой канал обмена через dvl_sock    |
+| resp_sock | dvl_sock #(resp_type) | Возвратый канал обмена через dvl_sock |
 
 #### Значение некоторых полей:
 
 | Поле      | Значение  |
 | --------- | --------- |
-| type_name | "dvv_gen" |
+| type_name | "dvl_gen" |
 
 ### Функции/Задачи:
 Класс содержит следующие функции/задачи:
@@ -39,19 +39,19 @@ class dvv_gen #(type item_type, resp_type = item_type) extends dvv_bc;
 ### Описание функций/задач:
 
 #### new
-Конструктор класса для создания экземпляра dvv_gen.
+Конструктор класса для создания экземпляра dvl_gen.
 
 Заголовок:
 ```Verilog
-function new(string name = "", dvv_bc parent = null);
+function new(string name = "", dvl_bc parent = null);
 ```
 
 Аргументы:
 | Имя       | Тип       | Описание                  |
 | --------- | --------- | ------------------------- |
 | name      | string    | Имя компонента            |
-| parent    | dvv_bc    | Экземпляр класса родителя |
+| parent    | dvl_bc    | Экземпляр класса родителя |
 
 ## Использование
 
-Данный класс используется через наследование. Экземпляр потомка служит для генерации тестовых воздействий и их отправке в потомок класса dvv_drv.
+Данный класс используется через наследование. Экземпляр потомка служит для генерации тестовых воздействий и их отправке в потомок класса dvl_drv.

@@ -1,9 +1,9 @@
-# dvv_cc (class creator)
+# dvl_cc (class creator)
 Данный файл содержит описание класса служащего для создание верификационных компонентов через функцию create_obj.
 
 Заголовок:
 ```Verilog
-class dvv_cc #(type class_t) extends dvv_bo;
+class dvl_cc #(type class_t) extends dvl_bo;
 ```
 
 ## Параметры класса:
@@ -14,7 +14,7 @@ class dvv_cc #(type class_t) extends dvv_bo;
 
 ## Поля и функции/задачи класса
 
-Данный класс наследует поля и функции/задачи из базового объекта [dvv_bo.md](dvv_bo.md).
+Данный класс наследует поля и функции/задачи из базового объекта [dvl_bo.md](dvl_bo.md).
 
 ### Поля:
 | Имя   | Тип               | Описание                                  |
@@ -25,7 +25,7 @@ class dvv_cc #(type class_t) extends dvv_bo;
 
 | Поле      | Значение  |
 | --------- | --------- |
-| type_name | "dvv_cc"  |
+| type_name | "dvl_cc"  |
 
 ### Функции/задачи:
 | Имя       | Описание                                          |
@@ -40,14 +40,14 @@ class dvv_cc #(type class_t) extends dvv_bo;
 
 Заголовок:
 ```Verilog
-static function class_t create_obj(string name, dvv_bc parent);
+static function class_t create_obj(string name, dvl_bc parent);
 ```
 
 Аргументы:
 | Имя       | Тип       | Описание                  |
 | --------- | --------- | ------------------------- |
 | name      | string    | Имя компонента            |
-| parent    | dvv_bc    | Экземпляр класса родителя |
+| parent    | dvl_bc    | Экземпляр класса родителя |
 
 #### get
 Функция служащая для получения типа компонента, содержащего данный класс.
@@ -59,27 +59,27 @@ static function this_type get();
 
 ## Использование:
 
-Данный класс должен иметь каждый потомок классов dvv_gen, dvv_scr, dvv_mon, dvv_drv, dvv_scb, dvv_test. Добавление класса производится с использованием макроса OBJ_BEGIN(T), например:
+Данный класс должен иметь каждый потомок классов dvl_gen, dvl_scr, dvl_mon, dvl_drv, dvl_scb, dvl_test. Добавление класса производится с использованием макроса OBJ_BEGIN(T), например:
 
 ```Verilog
-class wb_env extends dvv_env;
+class wb_env extends dvl_env;
     `OBJ_BEGIN( wb_env )
 
     tr_gen                      gen;
     wb_agt                      agt;
     wb_cov                      cov;
 
-    dvv_sock    #(ctrl_trans)   gen2drv_sock;
-    dvv_sock    #(ctrl_trans)   drv2gen_sock;
+    dvl_sock    #(ctrl_trans)   gen2drv_sock;
+    dvl_sock    #(ctrl_trans)   drv2gen_sock;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task connect();
     
 endclass : wb_env
 
-function wb_env::new(string name = "", dvv_bc parent = null);
+function wb_env::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
@@ -115,7 +115,7 @@ endtask : connect
 ```Verilog
 const static string type_name = "wb_env";
 
-typedef dvv_cc #(wb_env) create;
+typedef dvl_cc #(wb_env) create;
 
 typedef wb_env this_type;
 
@@ -137,7 +137,7 @@ endfunction : add_type
 
 static bit registred = add_type();
 
-function wb_env create_obj(string name = "", dvv_bc parent = null);
+function wb_env create_obj(string name = "", dvl_bc parent = null);
     wb_env obj;
     obj = new(name, parent);
     return obj;

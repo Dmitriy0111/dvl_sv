@@ -10,23 +10,23 @@
 `ifndef TEST_SCB__SV
 `define TEST_SCB__SV
 
-`dvv_ap_decl(_ctrl)
-`dvv_ap_decl(_uart)
+`dvl_ap_decl(_ctrl)
+`dvl_ap_decl(_uart)
 
-class test_scb extends dvv_scb;
+class test_scb extends dvl_scb;
     `OBJ_BEGIN( test_scb )
 
     typedef test_scb test_scb_t;
 
-    dvv_ap_ctrl     #(int,test_scb_t)   ctrl_ap;
-    dvv_ap_uart     #(int,test_scb_t)   uart_ap;
+    dvl_ap_ctrl     #(int,test_scb_t)   ctrl_ap;
+    dvl_ap_uart     #(int,test_scb_t)   uart_ap;
 
     logic   [7 : 0]     ctrl_q [$];
     logic   [7 : 0]     uart_q [$];
 
     string              msg;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern function void write_ctrl(int item);
     extern function void write_uart(int item);
@@ -36,7 +36,7 @@ class test_scb extends dvv_scb;
     
 endclass : test_scb
 
-function test_scb::new(string name = "", dvv_bc parent = null);
+function test_scb::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     ctrl_ap = new(this,"ctrl_ap");
     uart_ap = new(this,"uart_ap");

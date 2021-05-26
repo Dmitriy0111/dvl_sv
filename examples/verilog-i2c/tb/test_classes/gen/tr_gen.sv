@@ -10,23 +10,23 @@
 `ifndef TR_GEN__SV
 `define TR_GEN__SV
 
-class tr_gen extends dvv_gen #(ctrl_trans);
+class tr_gen extends dvl_gen #(ctrl_trans);
     `OBJ_BEGIN( tr_gen )
 
     ctrl_trans                  item;
 
-    dvv_aep #(logic [15 : 0])   i2c_agt_aep;
+    dvl_aep #(logic [15 : 0])   i2c_agt_aep;
 
     virtual clk_rst_if          vif;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task run();
     
 endclass : tr_gen
 
-function tr_gen::new(string name = "", dvv_bc parent = null);
+function tr_gen::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

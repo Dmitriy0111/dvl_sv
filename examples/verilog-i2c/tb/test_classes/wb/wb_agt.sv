@@ -10,19 +10,19 @@
 `ifndef WB_AGT__SV
 `define WB_AGT__SV
 
-class wb_agt extends dvv_agt;
+class wb_agt extends dvl_agt;
     `OBJ_BEGIN( wb_agt )
 
     wb_drv   drv;
     wb_mon   mon;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     
 endclass : wb_agt
 
-function wb_agt::new(string name = "", dvv_bc parent = null);
+function wb_agt::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

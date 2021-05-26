@@ -10,12 +10,12 @@
 `ifndef LAT_MTH__SV
 `define LAT_MTH__SV
 
-class lat_mth extends dvv_bc;
+class lat_mth extends dvl_bc;
     `OBJ_BEGIN( lat_mth )
 
     lat_vif     ctrl_vif;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task set_slave_addr_reg(logic [9 : 0] data_);
     extern task set_byte_cnt_reg(logic [7 : 0] data_);
@@ -61,7 +61,7 @@ class lat_mth extends dvv_bc;
 endclass : lat_mth
 //---------------------------------------------------------------------------//
 
-function lat_mth::new(string name = "", dvv_bc parent = null);
+function lat_mth::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 //---------------------------------------------------------------------------//

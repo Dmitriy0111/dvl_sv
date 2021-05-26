@@ -10,24 +10,24 @@
 `ifndef WB_ENV__SV
 `define WB_ENV__SV
 
-class wb_env extends dvv_env;
+class wb_env extends dvl_env;
     `OBJ_BEGIN( wb_env )
 
     tr_gen                      gen;
     wb_agt                      agt;
     wb_cov                      cov;
 
-    dvv_sock    #(ctrl_trans)   gen2drv_sock;
-    dvv_sock    #(ctrl_trans)   drv2gen_sock;
+    dvl_sock    #(ctrl_trans)   gen2drv_sock;
+    dvl_sock    #(ctrl_trans)   drv2gen_sock;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task connect();
     
 endclass : wb_env
 
-function wb_env::new(string name = "", dvv_bc parent = null);
+function wb_env::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

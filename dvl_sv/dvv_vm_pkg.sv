@@ -1,46 +1,46 @@
 /*
-*  File            : dvv_vm_pkg.sv
+*  File            : dvl_sv_pkg.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 25.12.2019
 *  Language        : SystemVerilog
-*  Description     : This is dvv vm package
+*  Description     : This is dvl sv package
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-package dvv_vm_pkg;
+package dvl_sv_pkg;
     
-    `include "dvv_classes/dvv_bo.sv"
+    `include "dvl_classes/dvl_bo.sv"
     
-    `include "dvv_classes/dvv_cc.sv"
+    `include "dvl_classes/dvl_cc.sv"
 
-    `include "dvv_classes/dvv_bc.sv"
+    `include "dvl_classes/dvl_bc.sv"
 
-    `include "dvv_classes/dvv_item.sv"
+    `include "dvl_classes/dvl_item.sv"
     
-    `include "dvv_classes/dvv_phase.sv"
-    `include "dvv_classes/dvv_phases.sv"
-    `include "dvv_classes/dvv_domain.sv"
+    `include "dvl_classes/dvl_phase.sv"
+    `include "dvl_classes/dvl_phases.sv"
+    `include "dvl_classes/dvl_domain.sv"
     
-    `include "dvv_classes/ports/dvv_bp.sv"
-    `include "dvv_classes/ports/dvv_ap.sv"
-    `include "dvv_classes/ports/dvv_aep.sv"
+    `include "dvl_classes/ports/dvl_bp.sv"
+    `include "dvl_classes/ports/dvl_ap.sv"
+    `include "dvl_classes/ports/dvl_aep.sv"
 
-    `include "dvv_classes/dvv_res.sv"
-    `include "dvv_classes/dvv_res_db.sv"
+    `include "dvl_classes/dvl_res.sv"
+    `include "dvl_classes/dvl_res_db.sv"
     
-    `include "dvv_classes/dvv_sock.sv"
+    `include "dvl_classes/dvl_sock.sv"
 
-    `include "dvv_classes/comps/dvv_drv.sv"
-    `include "dvv_classes/comps/dvv_mon.sv"
-    `include "dvv_classes/comps/dvv_scr.sv"
-    `include "dvv_classes/comps/dvv_agt.sv"
-    `include "dvv_classes/comps/dvv_env.sv"
-    `include "dvv_classes/comps/dvv_scb.sv"
-    `include "dvv_classes/comps/dvv_gen.sv"
-    `include "dvv_classes/comps/dvv_test.sv"
+    `include "dvl_classes/comps/dvl_drv.sv"
+    `include "dvl_classes/comps/dvl_mon.sv"
+    `include "dvl_classes/comps/dvl_scr.sv"
+    `include "dvl_classes/comps/dvl_agt.sv"
+    `include "dvl_classes/comps/dvl_env.sv"
+    `include "dvl_classes/comps/dvl_scb.sv"
+    `include "dvl_classes/comps/dvl_gen.sv"
+    `include "dvl_classes/comps/dvl_test.sv"
 
-    `include "dvv_classes/dvv_root.sv"
+    `include "dvl_classes/dvl_root.sv"
 
-    `include "dvv_commons.svh"
+    `include "dvl_commons.svh"
 
-endpackage : dvv_vm_pkg
+endpackage : dvl_sv_pkg

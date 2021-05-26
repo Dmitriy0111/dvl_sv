@@ -1,10 +1,10 @@
-# dvv_res (resource class)
+# dvl_res (resource class)
 
-Данный файл содержит описание класса ресурсов. Класс dvv_res используется только в dvv_res_db.
+Данный файл содержит описание класса ресурсов. Класс dvl_res используется только в dvl_res_db.
 
 Заголовок:
 ```Verilog
-class dvv_res #(type res_t);
+class dvl_res #(type res_t);
 ```
 
 ## Параметры класса:
@@ -25,7 +25,7 @@ class dvv_res #(type res_t);
 
 | Поле      | Значение  |
 | --------- | --------- |
-| type_name | "dvv_res" |
+| type_name | "dvl_res" |
 
 ### Функции/Задачи:
 | Имя   | Описание              |
@@ -35,7 +35,7 @@ class dvv_res #(type res_t);
 ### Описание функций/задач:
 
 #### new
-Конструктор класса для создания экземпляра dvv_res.
+Конструктор класса для создания экземпляра dvl_res.
 
 Заголовок:
 ```Verilog

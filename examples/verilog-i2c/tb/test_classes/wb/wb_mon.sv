@@ -10,7 +10,7 @@
 `ifndef WB_MON__SV
 `define WB_MON__SV
 
-class wb_mon extends dvv_mon #(ctrl_trans);
+class wb_mon extends dvl_mon #(ctrl_trans);
     `OBJ_BEGIN( wb_mon )
 
     string                  msg;
@@ -21,7 +21,7 @@ class wb_mon extends dvv_mon #(ctrl_trans);
 
     wb_mth                  mth;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task run();
@@ -31,13 +31,13 @@ class wb_mon extends dvv_mon #(ctrl_trans);
     
 endclass : wb_mon
 
-function wb_mon::new(string name = "", dvv_bc parent = null);
+function wb_mon::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     item_aep = new("item_aep");
 endfunction : new
 
 task wb_mon::build();
-    if( !dvv_res_db#(wb_vif)::get_res_db("wb_if_0",ctrl_vif) )
+    if( !dvl_res_db#(wb_vif)::get_res_db("wb_if_0",ctrl_vif) )
         $fatal();
 
     mth = wb_mth::create::create_obj("wb_mon_mth", this);

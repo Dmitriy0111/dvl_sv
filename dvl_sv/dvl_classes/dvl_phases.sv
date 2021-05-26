@@ -1,41 +1,41 @@
 /*
-*  File            : dvv_phases.sv
+*  File            : dvl_phases.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 20.01.2020
 *  Language        : SystemVerilog
-*  Description     : This is dvv phase class
+*  Description     : This is dvl phase class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_PHASES__SV
-`define DVV_PHASES__SV
+`ifndef DVL_PHASES__SV
+`define DVL_PHASES__SV
 
 // Build phase
-class dvv_build_phase extends dvv_phase;
+class dvl_build_phase extends dvl_phase;
     
-    const static string type_name = "dvv_build_phase";
+    const static string type_name = "dvl_build_phase";
 
-    local static dvv_build_phase inst;
+    local static dvl_build_phase inst;
     
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
     
-    extern static function dvv_build_phase create(string name = "", dvv_bc parent = null);
+    extern static function dvl_build_phase create(string name = "", dvl_bc parent = null);
     
     extern task exec();
 
-endclass : dvv_build_phase
+endclass : dvl_build_phase
 
-function dvv_build_phase::new(string name = "", dvv_bc parent = null);
+function dvl_build_phase::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-function dvv_build_phase dvv_build_phase::create(string name = "", dvv_bc parent = null);
+function dvl_build_phase dvl_build_phase::create(string name = "", dvl_bc parent = null);
     if(inst == null)
         inst = new(name, parent);
     return inst; 
 endfunction : create
 
-task dvv_build_phase::exec();
+task dvl_build_phase::exec();
     print("Build phase start\n");
 
     test.test_comps.push_back(test);
@@ -51,31 +51,31 @@ task dvv_build_phase::exec();
 endtask : exec
 
 // Connect phase
-class dvv_connect_phase extends dvv_phase;
+class dvl_connect_phase extends dvl_phase;
 
-    const static string type_name = "dvv_connect_phase";
+    const static string type_name = "dvl_connect_phase";
     
-    local static dvv_connect_phase inst;
+    local static dvl_connect_phase inst;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
     
-    extern static function dvv_connect_phase create(string name = "", dvv_bc parent = null);
+    extern static function dvl_connect_phase create(string name = "", dvl_bc parent = null);
     
     extern task exec();
 
-endclass : dvv_connect_phase
+endclass : dvl_connect_phase
 
-function dvv_connect_phase::new(string name = "", dvv_bc parent = null);
+function dvl_connect_phase::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-function dvv_connect_phase dvv_connect_phase::create(string name = "", dvv_bc parent = null);
+function dvl_connect_phase dvl_connect_phase::create(string name = "", dvl_bc parent = null);
     if(inst == null)
         inst = new(name, parent);
     return inst; 
 endfunction : create
 
-task dvv_connect_phase::exec();
+task dvl_connect_phase::exec();
     print("Connect phase start\n");
     foreach(test.test_comps[i])
         test.test_comps[i].connect();
@@ -83,31 +83,31 @@ task dvv_connect_phase::exec();
 endtask : exec
 
 // Run phase
-class dvv_run_phase extends dvv_phase;
+class dvl_run_phase extends dvl_phase;
 
-    const static string type_name = "dvv_run_phase";
+    const static string type_name = "dvl_run_phase";
 
-    local static dvv_run_phase inst;
+    local static dvl_run_phase inst;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
-    extern static function dvv_run_phase create(string name = "", dvv_bc parent = null);
+    extern static function dvl_run_phase create(string name = "", dvl_bc parent = null);
     
     extern task exec();
 
-endclass : dvv_run_phase
+endclass : dvl_run_phase
 
-function dvv_run_phase::new(string name = "", dvv_bc parent = null);
+function dvl_run_phase::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-function dvv_run_phase dvv_run_phase::create(string name = "", dvv_bc parent = null);
+function dvl_run_phase dvl_run_phase::create(string name = "", dvl_bc parent = null);
     if(inst == null)
         inst = new(name, parent);
     return inst; 
 endfunction : create
 
-task dvv_run_phase::exec();
+task dvl_run_phase::exec();
     print("Run phase start\n");
     foreach(test.test_comps[i])
     fork
@@ -119,31 +119,31 @@ task dvv_run_phase::exec();
 endtask : exec
 
 // Clean up phase
-class dvv_clean_up_phase extends dvv_phase;
+class dvl_clean_up_phase extends dvl_phase;
 
-    const static string type_name = "dvv_clean_up_phase";
+    const static string type_name = "dvl_clean_up_phase";
 
-    local static dvv_clean_up_phase inst;
+    local static dvl_clean_up_phase inst;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
-    extern static function dvv_clean_up_phase create(string name = "", dvv_bc parent = null);
+    extern static function dvl_clean_up_phase create(string name = "", dvl_bc parent = null);
     
     extern task exec();
 
-endclass : dvv_clean_up_phase
+endclass : dvl_clean_up_phase
 
-function dvv_clean_up_phase::new(string name = "", dvv_bc parent = null);
+function dvl_clean_up_phase::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-function dvv_clean_up_phase dvv_clean_up_phase::create(string name = "", dvv_bc parent = null);
+function dvl_clean_up_phase dvl_clean_up_phase::create(string name = "", dvl_bc parent = null);
     if(inst == null)
         inst = new(name, parent);
     return inst; 
 endfunction : create
 
-task dvv_clean_up_phase::exec();
+task dvl_clean_up_phase::exec();
     wait(run_drop == 0);
     print("Clean up phase start\n");
     foreach(test.test_comps[i])
@@ -152,33 +152,33 @@ task dvv_clean_up_phase::exec();
 endtask : exec
 
 // Report phase
-class dvv_report_phase extends dvv_phase;
+class dvl_report_phase extends dvl_phase;
 
-    const static string type_name = "dvv_report_phase";
+    const static string type_name = "dvl_report_phase";
 
-    local static dvv_report_phase inst;
+    local static dvl_report_phase inst;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
-    extern static function dvv_report_phase create(string name = "", dvv_bc parent = null);
+    extern static function dvl_report_phase create(string name = "", dvl_bc parent = null);
     
     extern task exec();
 
-endclass : dvv_report_phase
+endclass : dvl_report_phase
 
-function dvv_report_phase::new(string name = "", dvv_bc parent = null);
+function dvl_report_phase::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-function dvv_report_phase dvv_report_phase::create(string name = "", dvv_bc parent = null);
+function dvl_report_phase dvl_report_phase::create(string name = "", dvl_bc parent = null);
     if(inst == null)
         inst = new(name, parent);
     return inst; 
 endfunction : create
 
-task dvv_report_phase::exec();
+task dvl_report_phase::exec();
     print("Test complete!\n");
     $finish;
 endtask : exec
 
-`endif // DVV_PHASES__SV
+`endif // DVL_PHASES__SV

@@ -1,20 +1,20 @@
 /*
-*  File            : dvv_bp.sv
+*  File            : dvl_bp.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 10.01.2020
 *  Language        : SystemVerilog
-*  Description     : This is dvv base port class
+*  Description     : This is dvl base port class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_BP__SV
-`define DVV_BP__SV
+`ifndef DVL_BP__SV
+`define DVL_BP__SV
 
-virtual class dvv_bp #(type item_type = int);
+virtual class dvl_bp #(type item_type = int);
 
-    const static string type_name = "dvv_bp";
+    const static string type_name = "dvl_bp";
 
-    typedef dvv_bp #(item_type) bp_type;
+    typedef dvl_bp #(item_type) bp_type;
 
     string          p_name;
 
@@ -24,10 +24,10 @@ virtual class dvv_bp #(type item_type = int);
 
     pure virtual function void write(ref item_type item);
 
-endclass : dvv_bp
+endclass : dvl_bp
 
-task dvv_bp::connect(bp_type bp_item);
+task dvl_bp::connect(bp_type bp_item);
     bp_list.push_back(bp_item);
 endtask : connect
 
-`endif // DVV_BP__SV
+`endif // DVL_BP__SV

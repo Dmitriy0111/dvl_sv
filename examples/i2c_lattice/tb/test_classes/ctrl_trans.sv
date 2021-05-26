@@ -10,7 +10,7 @@
 `ifndef CTRL_TRANS__SV
 `define CTRL_TRANS__SV
 
-class ctrl_trans extends dvv_item;
+class ctrl_trans extends dvl_item;
     //`OBJ_BEGIN(ctrl_trans)
 
     rand    logic   [31 : 0]    data;
@@ -19,7 +19,7 @@ class ctrl_trans extends dvv_item;
 
     int     tr_num = 0;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task print_tr();
 
@@ -37,7 +37,7 @@ class ctrl_trans extends dvv_item;
     
 endclass : ctrl_trans
 
-function ctrl_trans::new(string name = "", dvv_bc parent = null);
+function ctrl_trans::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

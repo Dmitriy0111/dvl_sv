@@ -1,29 +1,29 @@
 /*
-*  File            : dvv_bc.sv
+*  File            : dvl_bc.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 25.12.2019
 *  Language        : SystemVerilog
-*  Description     : This is dvv base class
+*  Description     : This is dvl base class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_BC__SV
-`define DVV_BC__SV
+`ifndef DVL_BC__SV
+`define DVL_BC__SV
 
-class dvv_bc extends dvv_bo;
+class dvl_bc extends dvl_bo;
 
-    const static string type_name = "dvv_bc";
+    const static string type_name = "dvl_bc";
 
-    dvv_bc          child_l [$];
+    dvl_bc          child_l [$];
 
-    static  dvv_bc  type_bc[string];
+    static  dvl_bc  type_bc[string];
 
-    static  dvv_bc  test;
-    dvv_bc          test_comps[$];
+    static  dvl_bc  test;
+    dvl_bc          test_comps[$];
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
-    extern task add_child(dvv_bc child);
+    extern task add_child(dvl_bc child);
 
     extern virtual task build();
     extern virtual task connect();
@@ -36,11 +36,11 @@ class dvv_bc extends dvv_bo;
 
     extern virtual function string get_type_name();
 
-    extern virtual function dvv_bc create_obj(string name, dvv_bc parent);
+    extern virtual function dvl_bc create_obj(string name, dvl_bc parent);
     
-endclass : dvv_bc
+endclass : dvl_bc
 
-function dvv_bc::new(string name = "", dvv_bc parent = null);
+function dvl_bc::new(string name = "", dvl_bc parent = null);
     this.name = name;
     this.parent = parent;
     this.fname = name;
@@ -49,26 +49,26 @@ function dvv_bc::new(string name = "", dvv_bc parent = null);
         parent.add_child(this);
 endfunction : new
 
-task dvv_bc::add_child(dvv_bc child);
+task dvl_bc::add_child(dvl_bc child);
     child_l.push_back(child);
 endtask : add_child
 
-task dvv_bc::build();
+task dvl_bc::build();
 endtask : build
 
-task dvv_bc::connect();
+task dvl_bc::connect();
 endtask : connect
 
-task dvv_bc::run();
+task dvl_bc::run();
 endtask : run
 
-task dvv_bc::clean_up();
+task dvl_bc::clean_up();
 endtask : clean_up
 
-task dvv_bc::report();
+task dvl_bc::report();
 endtask : report
 
-task dvv_bc::print_map();
+task dvl_bc::print_map();
     for(int i = 0 ; i < level ; i++)
         print("    ");
     print( { this.name , "\n" } );
@@ -76,15 +76,15 @@ task dvv_bc::print_map();
         child_l[i].print_childs();
 endtask : print_map
 
-task dvv_bc::print_childs();
+task dvl_bc::print_childs();
     this.print_map();
 endtask : print_childs
 
-function string dvv_bc::get_type_name();
+function string dvl_bc::get_type_name();
     return type_name;
 endfunction : get_type_name
 
-function dvv_bc dvv_bc::create_obj(string name, dvv_bc parent);
+function dvl_bc dvl_bc::create_obj(string name, dvl_bc parent);
 endfunction : create_obj
 
-`endif // DVV_BC__SV
+`endif // DVL_BC__SV

@@ -1,28 +1,28 @@
 /*
-*  File            : dvv_item.sv
+*  File            : dvl_item.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 28.01.2020
 *  Language        : SystemVerilog
-*  Description     : This is dvv item class
+*  Description     : This is dvl item class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_ITEM__SV
-`define DVV_ITEM__SV
+`ifndef DVL_ITEM__SV
+`define DVL_ITEM__SV
 
-class dvv_item extends dvv_bo;
+class dvl_item extends dvl_bo;
 
-    const static string type_name = "dvv_item";
+    const static string type_name = "dvl_item";
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
     
-endclass : dvv_item
+endclass : dvl_item
 
-function dvv_item::new(string name = "", dvv_bc parent = null);
+function dvl_item::new(string name = "", dvl_bc parent = null);
     this.parent = parent;
     this.name = name;
     this.fname = { parent.fname , "." , name };
     level = parent.level + 1;
 endfunction : new
 
-`endif // DVV_ITEM__SV
+`endif // DVL_ITEM__SV

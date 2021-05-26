@@ -1,10 +1,10 @@
-# dvv_res_db (resource database class)
+# dvl_res_db (resource database class)
 
 Данный файл содержит описание класса базы данных ресурсов. 
 
 Заголовок:
 ```Verilog
-class dvv_res_db #(type res_t);
+class dvl_res_db #(type res_t);
 ```
 
 ## Параметры класса:
@@ -18,13 +18,13 @@ class dvv_res_db #(type res_t);
 ### Поля:
 | Имя       | Тип                       | Описание                          |
 | --------- | ------------------------- | --------------------------------- |
-| dvv_db    | static dvv_res #(res_t)   | Очередь ресурсов с заданным типом |
+| dvl_db    | static dvl_res #(res_t)   | Очередь ресурсов с заданным типом |
 
 #### Значение некоторых полей:
 
 | Поле      | Значение      |
 | --------- | ------------- |
-| type_name | "dvv_res_db"  |
+| type_name | "dvl_res_db"  |
 
 ### Функции/Задачи:
 | Имя           | Описание                                      |
@@ -35,7 +35,7 @@ class dvv_res_db #(type res_t);
 ### Описание функций/задач:
 
 #### set_res_db
-Задача для добавления ресурса в базу данных (очередь dvv_db).
+Задача для добавления ресурса в базу данных (очередь dvl_db).
 
 Заголовок:
 ```Verilog
@@ -49,7 +49,7 @@ static task set_res_db(string name, input res_t in_res);
 | in_res    | inout res_t   | Значение ресурса  |
 
 #### get_res_db
-Задача для извлечения ресурса из базы данных (очередь dvv_db).
+Задача для извлечения ресурса из базы данных (очередь dvl_db).
 
 Заголовок:
 ```Verilog
@@ -69,16 +69,16 @@ static function bit get_res_db(string name, inout res_t out_res);
 Код для добавления ресурса в базу данных:
 ```Verilog
     // Добавление виртуального интерфейса i2c_if_0 в базу данных
-    dvv_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
+    dvl_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
     // Добавление счётчика повторений в базу данных
-    dvv_res_db#( integer )::set_res_db( "rep_number" , repeat_n );
+    dvl_res_db#( integer )::set_res_db( "rep_number" , repeat_n );
 ```
 
 Код для извлечения ресурса из базы данных:
 ```Verilog
-    dvv_res_db#( virtual i2c_if )::get_res_db("i2c_if_0",ctrl_vif);
+    dvl_res_db#( virtual i2c_if )::get_res_db("i2c_if_0",ctrl_vif);
 
-    dvv_res_db#( integer )::get_res_db("rep_number",repeat_n);
+    dvl_res_db#( integer )::get_res_db("rep_number",repeat_n);
 ```
 
 Функция get_res_db возвращает наличие ресурса в базе данных. Возвращаемое значение следует использовать для генерации исключений или задания начальных значений.

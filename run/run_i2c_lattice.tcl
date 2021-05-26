@@ -10,8 +10,8 @@
 # compile design rtl
 vlog    ../examples/i2c_lattice/FPGA-RD-02201-1-0-Generic-Soft-I2C-Master-Controller/Generic_Soft_I2C_Master/Source/*.*v
 
-# compile dvv_vm classes pkg
-vlog -sv ../dvv_vm/*.*v
+# compile dvl_sv classes pkg
+vlog -sv ../dvl_sv/*.*v
 # compile verification components
 vlog -sv ../interfaces/*.*v
 vlog -sv ../examples/i2c_lattice/tb/if/*.*v
@@ -19,7 +19,7 @@ vlog -sv ../examples/i2c_lattice/tb/i2c_lattice/i2c_test_pkg.sv
 # compile testbench
 vlog -sv ../examples/i2c_lattice/tb/i2c_lattice/i2c_lattice_ctb.sv
 
-vsim -novopt work.i2c_lattice_ctb +DVV_TEST_NAME=i2c_test
+vsim -novopt work.i2c_lattice_ctb +DVL_TEST_NAME=i2c_test
 
 add wave -divider  "testbench signals"
 add wave -position insertpoint sim:/i2c_lattice_ctb/*

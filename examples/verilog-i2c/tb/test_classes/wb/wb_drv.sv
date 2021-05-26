@@ -10,7 +10,7 @@
 `ifndef WB_DRV__SV
 `define WB_DRV__SV
 
-class wb_drv extends dvv_drv #(ctrl_trans);
+class wb_drv extends dvl_drv #(ctrl_trans);
     `OBJ_BEGIN( wb_drv )
 
     ctrl_trans                  item;
@@ -20,7 +20,7 @@ class wb_drv extends dvv_drv #(ctrl_trans);
 
     wb_mth                      mth;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task write_reg();
     extern task read_reg();
@@ -30,12 +30,12 @@ class wb_drv extends dvv_drv #(ctrl_trans);
     
 endclass : wb_drv
 
-function wb_drv::new(string name = "", dvv_bc parent = null);
+function wb_drv::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
 task wb_drv::build();
-    if( !dvv_res_db#(wb_vif)::get_res_db("wb_if_0",ctrl_vif) )
+    if( !dvl_res_db#(wb_vif)::get_res_db("wb_if_0",ctrl_vif) )
         $fatal();
 
     mth = wb_mth::create::create_obj("wb_drv_mth", this);

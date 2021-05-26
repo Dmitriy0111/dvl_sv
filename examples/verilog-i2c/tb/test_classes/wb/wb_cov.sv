@@ -10,14 +10,14 @@
 `ifndef WB_COV__SV
 `define WB_COV__SV
 
-class wb_cov extends dvv_scr #(ctrl_trans);
+class wb_cov extends dvl_scr #(ctrl_trans);
     `OBJ_BEGIN( wb_cov )
 
     ctrl_trans      cov_item;
     
     logic   [15 : 0]    presc = '0;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern function void write(ctrl_trans item);
 
@@ -44,7 +44,7 @@ class wb_cov extends dvv_scr #(ctrl_trans);
     
 endclass : wb_cov
 
-function wb_cov::new(string name = "", dvv_bc parent = null);
+function wb_cov::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     item_ap = new(this,"wb_cov_ap");
     cov_tr = new();

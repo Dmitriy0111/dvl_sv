@@ -10,23 +10,23 @@
 `ifndef LAT_ENV__SV
 `define LAT_ENV__SV
 
-class lat_env extends dvv_env;
+class lat_env extends dvl_env;
     `OBJ_BEGIN( lat_env )
 
     tr_gen                      gen;
     lat_agt                      agt;
 
-    dvv_sock    #(ctrl_trans)   gen2drv_sock;
-    dvv_sock    #(ctrl_trans)   drv2gen_sock;
+    dvl_sock    #(ctrl_trans)   gen2drv_sock;
+    dvl_sock    #(ctrl_trans)   drv2gen_sock;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task connect();
     
 endclass : lat_env
 
-function lat_env::new(string name = "", dvv_bc parent = null);
+function lat_env::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

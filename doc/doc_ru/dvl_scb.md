@@ -1,15 +1,15 @@
-# dvv_scb (scoreboard class)
+# dvl_scb (scoreboard class)
 
 Данный файл содержит описание класса отвечающейго за анализ результатов тестирования.
 
 Заголовок:
 ```Verilog
-class dvv_scb extends dvv_bc;
+class dvl_scb extends dvl_bc;
 ```
 
 ## Поля и функции/задачи класса  
 
-Данный класс наследует поля и функции/задачи из базового класса компонентов [dvv_bc.md](dvv_bc.md).
+Данный класс наследует поля и функции/задачи из базового класса компонентов [dvl_bc.md](dvl_bc.md).
 
 ### Поля:
 
@@ -17,7 +17,7 @@ class dvv_scb extends dvv_bc;
 
 | Поле      | Значение  |
 | --------- | --------- |
-| type_name | "dvv_scb" |
+| type_name | "dvl_scb" |
 
 ### Функции/задачи:
 | Имя       | Описание                                |
@@ -27,18 +27,18 @@ class dvv_scb extends dvv_bc;
 ### Описание функций/задач:
 
 #### new
-Конструктор класса для создания экземпляра dvv_scb.
+Конструктор класса для создания экземпляра dvl_scb.
 
 Заголовок:
 ```Verilog
-function new(string name = "", dvv_bc parent = null);
+function new(string name = "", dvl_bc parent = null);
 ```
 
 Аргументы:
 | Имя       | Тип       | Описание                  |
 | --------- | --------- | ------------------------- |
 | name      | string    | Имя компонента            |
-| parent    | dvv_bc    | Экземпляр класса родителя |
+| parent    | dvl_bc    | Экземпляр класса родителя |
 
 ## Использование
 

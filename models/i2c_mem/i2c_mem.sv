@@ -13,7 +13,7 @@
 timeprecision   1ns;
 timeunit        1ns;
 
-class i2c_mem #(parameter chip_addr = 8'h42) extends dvv_bc;
+class i2c_mem #(parameter chip_addr = 8'h42) extends dvl_bc;
     `OBJ_BEGIN( i2c_mem )
 
     enum int { 
@@ -50,7 +50,7 @@ class i2c_mem #(parameter chip_addr = 8'h42) extends dvv_bc;
 
     string              msg;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task run();
@@ -69,7 +69,7 @@ class i2c_mem #(parameter chip_addr = 8'h42) extends dvv_bc;
 
 endclass : i2c_mem
 
-function i2c_mem::new(string name = "", dvv_bc parent = null);
+function i2c_mem::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     chip_addr_ = chip_addr << 1;
     item.rw = '0;
@@ -80,7 +80,7 @@ function i2c_mem::new(string name = "", dvv_bc parent = null);
 endfunction : new
 
 task i2c_mem::build();
-    if( !dvv_res_db#(i2c_vif)::get_res_db("i2c_if_0",i2c_vif_) )
+    if( !dvl_res_db#(i2c_vif)::get_res_db("i2c_if_0",i2c_vif_) )
         $fatal();
 endtask : build
 

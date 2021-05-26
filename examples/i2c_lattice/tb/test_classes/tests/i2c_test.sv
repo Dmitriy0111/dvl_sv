@@ -10,22 +10,22 @@
 `ifndef I2C_TEST__SV
 `define I2C_TEST__SV
 
-class i2c_test extends dvv_test;
+class i2c_test extends dvl_test;
     `OBJ_BEGIN( i2c_test )
 
     string                  if_name;
 
-    dvv_bc                  env;
+    dvl_bc                  env;
 
     i2c_mem                 i2c_mem_;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     
 endclass : i2c_test
 
-function i2c_test::new(string name = "", dvv_bc parent = null);
+function i2c_test::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

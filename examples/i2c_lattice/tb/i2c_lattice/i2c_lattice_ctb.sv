@@ -8,7 +8,7 @@
 */
 
 import i2c_test_pkg::*;
-import dvv_vm_pkg::*;
+import dvl_sv_pkg::*;
 
 module i2c_lattice_ctb;
 
@@ -86,8 +86,8 @@ module i2c_lattice_ctb;
 
     initial
     begin
-        dvv_res_db#( virtual lat_if )::set_res_db( "lat_if_0" , lat_if_0 );
-        dvv_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
+        dvl_res_db#( virtual lat_if )::set_res_db( "lat_if_0" , lat_if_0 );
+        dvl_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
         
         run_test("");
     end

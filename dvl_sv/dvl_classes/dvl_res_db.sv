@@ -1,42 +1,42 @@
 /*
-*  File            : dvv_res_db.sv
+*  File            : dvl_res_db.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 25.12.2019
 *  Language        : SystemVerilog
-*  Description     : This is dvv resource database
+*  Description     : This is dvl resource database
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_RES_DB__SV
-`define DVV_RES_DB__SV
+`ifndef DVL_RES_DB__SV
+`define DVL_RES_DB__SV
 
-class dvv_res_db #(type res_t);
+class dvl_res_db #(type res_t);
 
-    const static string type_name = "dvv_res_db";
+    const static string type_name = "dvl_res_db";
 
-    static  dvv_res     #(res_t)    dvv_db[$];
+    static  dvl_res     #(res_t)    dvl_db[$];
 
     extern static task         set_res_db(string name, input res_t in_res);
     extern static function bit get_res_db(string name, inout res_t out_res);
     
-endclass : dvv_res_db
+endclass : dvl_res_db
 
-task dvv_res_db::set_res_db(string name, input res_t in_res);
-    dvv_res #(res_t) new_res = new(name, in_res);
-    dvv_res #(res_t) res_q [$];
-    res_q = dvv_db.find with(item.res_name == name);
+task dvl_res_db::set_res_db(string name, input res_t in_res);
+    dvl_res #(res_t) new_res = new(name, in_res);
+    dvl_res #(res_t) res_q [$];
+    res_q = dvl_db.find with(item.res_name == name);
     if(res_q.size() == 0)
-        dvv_db.push_back(new_res);
+        dvl_db.push_back(new_res);
 endtask : set_res_db
 
-function bit dvv_res_db::get_res_db(string name, inout res_t out_res);
-    foreach( dvv_db[i] )
-        if( dvv_db[i].res_name == name )
+function bit dvl_res_db::get_res_db(string name, inout res_t out_res);
+    foreach( dvl_db[i] )
+        if( dvl_db[i].res_name == name )
         begin
-            out_res = dvv_db[i].res_val;
+            out_res = dvl_db[i].res_val;
             return '1;
         end
     return '0;
 endfunction : get_res_db
 
-`endif // DVV_RES_DB__SV
+`endif // DVL_RES_DB__SV

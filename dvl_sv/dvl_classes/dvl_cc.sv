@@ -1,26 +1,26 @@
 /*
-*  File            : dvv_cc.sv
+*  File            : dvl_cc.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 25.12.2019
 *  Language        : SystemVerilog
-*  Description     : This is dvv creator class
+*  Description     : This is dvl creator class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_CC__SV
-`define DVV_CC__SV
+`ifndef DVL_CC__SV
+`define DVL_CC__SV
 
-typedef class dvv_bc;
+typedef class dvl_bc;
 
-class dvv_cc #(type class_t) extends dvv_bo;
+class dvl_cc #(type class_t) extends dvl_bo;
 
-    const static string type_name = "dvv_cc";
+    const static string type_name = "dvl_cc";
 
-    typedef dvv_cc #(class_t) this_type;
+    typedef dvl_cc #(class_t) this_type;
 
     static this_type me = get();
 
-    static function class_t create_obj(string name, dvv_bc parent);
+    static function class_t create_obj(string name, dvl_bc parent);
         string msg;
         class_t obj = new(name, parent);
         obj.fname = { parent.fname , "." , name };
@@ -35,6 +35,6 @@ class dvv_cc #(type class_t) extends dvv_bo;
         return me;
     endfunction
     
-endclass : dvv_cc
+endclass : dvl_cc
 
-`endif // DVV_CC__SV
+`endif // DVL_CC__SV

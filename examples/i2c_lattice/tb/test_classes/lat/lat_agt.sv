@@ -10,19 +10,19 @@
 `ifndef LAT_AGT__SV
 `define LAT_AGT__SV
 
-class lat_agt extends dvv_agt;
+class lat_agt extends dvl_agt;
     `OBJ_BEGIN( lat_agt )
 
     lat_drv     drv;
     lat_mon     mon;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     
 endclass : lat_agt
 
-function lat_agt::new(string name = "", dvv_bc parent = null);
+function lat_agt::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 

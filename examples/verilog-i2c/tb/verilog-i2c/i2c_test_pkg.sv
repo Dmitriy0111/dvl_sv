@@ -11,8 +11,8 @@ package i2c_test_pkg;
 
     typedef virtual wb_if wb_vif;
 
-    import dvv_vm_pkg::*;
-    `include "../../../../dvv_vm/dvv_macro.svh"
+    import dvl_sv_pkg::*;
+    `include "../../../../dvl_sv/dvl_macro.svh"
 
     `include "../test_classes/ctrl_trans.sv"
 

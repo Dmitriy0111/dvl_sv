@@ -16,7 +16,7 @@ timeunit        1ps;
 class mipi_csi2_mon extends mipi_base_mon;
     `OBJ_BEGIN( mipi_csi2_mon )
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task run();
@@ -27,7 +27,7 @@ class mipi_csi2_mon extends mipi_base_mon;
 
 endclass : mipi_csi2_mon
 
-function mipi_csi2_mon::new(string name = "", dvv_bc parent = null);
+function mipi_csi2_mon::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     item_aep = new("item_aep");
     $timeformat(-12, 3, " ps", 10);
@@ -36,11 +36,11 @@ endfunction : new
 task mipi_csi2_mon::build();
     super.build();
 
-    if( !dvv_res_db#(mipi_vif)::get_res_db("mipi_if_0", vif) )
+    if( !dvl_res_db#(mipi_vif)::get_res_db("mipi_if_0", vif) )
         $fatal();
-    if( !dvv_res_db#(int)::get_res_db("line_num", line_num) )
+    if( !dvl_res_db#(int)::get_res_db("line_num", line_num) )
         $fatal();
-    if( !dvv_res_db#(int)::get_res_db("wr2file_en", wr2file_en) )
+    if( !dvl_res_db#(int)::get_res_db("wr2file_en", wr2file_en) )
         wr2file_en = '1;
 
     if( wr2file_en )

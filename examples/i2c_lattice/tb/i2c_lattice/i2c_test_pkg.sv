@@ -12,8 +12,8 @@ package i2c_test_pkg;
     typedef virtual lat_if lat_vif;
     typedef virtual i2c_if i2c_vif;
 
-    import dvv_vm_pkg::*;
-    `include "../../../../dvv_vm/dvv_macro.svh"
+    import dvl_sv_pkg::*;
+    `include "../../../../dvl_sv/dvl_macro.svh"
 
     `include "../test_classes/ctrl_trans.sv"
 

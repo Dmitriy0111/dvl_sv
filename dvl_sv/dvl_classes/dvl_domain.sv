@@ -1,49 +1,49 @@
 /*
-*  File            : dvv_domain.sv
+*  File            : dvl_domain.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 15.12.2020
 *  Language        : SystemVerilog
-*  Description     : This is dvv domain class
+*  Description     : This is dvl domain class
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_DOMAIN__SV
-`define DVV_DOMAIN__SV
+`ifndef DVL_DOMAIN__SV
+`define DVL_DOMAIN__SV
 
-class dvv_domain extends dvv_bc;
+class dvl_domain extends dvl_bc;
 
-    const static string type_name = "dvv_domain";
+    const static string type_name = "dvl_domain";
 
-    dvv_phase   phase_q[$];
+    dvl_phase   phase_q[$];
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
-    extern task add_phase(dvv_phase phase);
+    extern task add_phase(dvl_phase phase);
 
     extern task add_phases();
 
     extern task exec();
     
-endclass : dvv_domain
+endclass : dvl_domain
 
-function dvv_domain::new(string name = "", dvv_bc parent = null);
+function dvl_domain::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
 endfunction : new
 
-task dvv_domain::add_phase(dvv_phase phase);
+task dvl_domain::add_phase(dvl_phase phase);
     phase_q.push_back(phase);
 endtask : add_phase
 
-task dvv_domain::add_phases();
-    add_phase( dvv_build_phase   ::create("Build phase"   ) );
-    add_phase( dvv_connect_phase ::create("Connect phase" ) );
-    add_phase( dvv_run_phase     ::create("Run phase"     ) );
-    add_phase( dvv_clean_up_phase::create("Clean up phase") );
-    add_phase( dvv_report_phase  ::create("Report phase"  ) );
+task dvl_domain::add_phases();
+    add_phase( dvl_build_phase   ::create("Build phase"   ) );
+    add_phase( dvl_connect_phase ::create("Connect phase" ) );
+    add_phase( dvl_run_phase     ::create("Run phase"     ) );
+    add_phase( dvl_clean_up_phase::create("Clean up phase") );
+    add_phase( dvl_report_phase  ::create("Report phase"  ) );
 endtask : add_phases
 
-task dvv_domain::exec();
-    dvv_phase c_phase;
+task dvl_domain::exec();
+    dvl_phase c_phase;
 
     while(phase_q.size())
     begin
@@ -52,4 +52,4 @@ task dvv_domain::exec();
     end
 endtask : exec
 
-`endif // DVV_DOMAIN__SV
+`endif // DVL_DOMAIN__SV

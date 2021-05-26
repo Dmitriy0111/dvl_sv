@@ -1,10 +1,10 @@
-# dvv_sock (socket class)
+# dvl_sock (socket class)
 
 Данный файл содержит описание канала обмена между верификационными компонентами с возможностью блокировки. Данные для обмена могут быть как системные, так и пользовательские.
 
 Заголовок:
 ```Verilog
-class dvv_sock #(type mail_t = int);
+class dvl_sock #(type mail_t = int);
 ```
 
 ## Параметры класса:
@@ -26,7 +26,7 @@ class dvv_sock #(type mail_t = int);
 
 | Поле      | Значение      |
 | --------- | ------------- |
-| type_name | "dvv_sock"    |
+| type_name | "dvl_sock"    |
 
 ### Функции/Задачи:
 | Имя       | Описание                                          |
@@ -43,7 +43,7 @@ class dvv_sock #(type mail_t = int);
 ### Описание функций/задач:
 
 #### new
-Конструктор класса для создания экземпляра dvv_sock.
+Конструктор класса для создания экземпляра dvl_sock.
 
 Заголовок:
 ```Verilog
@@ -55,13 +55,13 @@ function new();
 
 Заголовок:
 ```Verilog
-extern task connect(dvv_sock #(mail_t) oth_sock);
+extern task connect(dvl_sock #(mail_t) oth_sock);
 ```
 
 Аргументы:
 | Имя       | Тип                   | Описание                      |
 | --------- | --------------------- | ----------------------------- |
-| oth_sock  | dvv_sock #(mail_t)    | Экземпляр другого dvv_sock    |
+| oth_sock  | dvl_sock #(mail_t)    | Экземпляр другого dvl_sock    |
 
 #### trig_sock
 Задача для выставления события sock_e.
@@ -136,9 +136,9 @@ task rec_msg(ref mail_t msg);
 При объявления экземпляра класса необходимо указать тип переменной подлежащей обмену и имя:
 ```Verilog
     // Объявление экземпляра класса с системным типом переменной
-    dvv_sock    #(int)      item_sock_0;
+    dvl_sock    #(int)      item_sock_0;
     // Объявление экземпляра класса с пользовательским типом переменой
-    dvv_sock    #(user_t)   item_sock_1;
+    dvl_sock    #(user_t)   item_sock_1;
 ```
 
 Создание экземпляра класса производится вызовом конструктора:

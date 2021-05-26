@@ -10,7 +10,7 @@
 `ifndef LAT_MON__SV
 `define LAT_MON__SV
 
-class lat_mon extends dvv_mon #(ctrl_trans);
+class lat_mon extends dvl_mon #(ctrl_trans);
     `OBJ_BEGIN( lat_mon )
 
     string                  msg;
@@ -21,7 +21,7 @@ class lat_mon extends dvv_mon #(ctrl_trans);
 
     lat_mth                 mth;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task run();
@@ -31,13 +31,13 @@ class lat_mon extends dvv_mon #(ctrl_trans);
     
 endclass : lat_mon
 
-function lat_mon::new(string name = "", dvv_bc parent = null);
+function lat_mon::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     item_aep = new("item_aep");
 endfunction : new
 
 task lat_mon::build();
-    if( !dvv_res_db#(lat_vif)::get_res_db("lat_if_0",ctrl_vif) )
+    if( !dvl_res_db#(lat_vif)::get_res_db("lat_if_0",ctrl_vif) )
         $fatal();
 
     mth = lat_mth::create::create_obj("lat_mon_mth", this);

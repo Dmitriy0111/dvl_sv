@@ -23,14 +23,14 @@ class tr_dgen extends tr_gen;
 
     ctrl_trans              resp_item;
 
-    extern function new(string name = "", dvv_bc parent = null);
+    extern function new(string name = "", dvl_bc parent = null);
 
     extern task build();
     extern task run();
     
 endclass : tr_dgen
 
-function tr_dgen::new(string name = "", dvv_bc parent = null);
+function tr_dgen::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     i2c_agt_aep = new();
 endfunction : new
@@ -42,7 +42,7 @@ task tr_dgen::build();
     item_sock = new();
     resp_sock = new();
 
-    if( !dvv_res_db#(virtual lat_if)::get_res_db("lat_if_0",vif) )
+    if( !dvl_res_db#(virtual lat_if)::get_res_db("lat_if_0",vif) )
         $fatal();
 
     fp = $fopen("../examples/i2c_lattice/tb/test_classes/tr_dgen.dat", "r");

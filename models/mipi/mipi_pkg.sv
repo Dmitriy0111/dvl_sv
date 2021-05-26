@@ -226,8 +226,8 @@ package mipi_pkg;
         '{ usr_def8_csi         , long_pkt  , "usr_def8"            }
     };
 
-    import dvv_vm_pkg::*;
-    `include "../dvv_vm/dvv_vm/dvv_macro.svh"
+    import dvl_sv_pkg::*;
+    `include "../dvl_sv/dvl_sv/dvl_macro.svh"
 
     `include "mipi_base_mon.sv"
     `include "mipi_dsi_mon.sv"

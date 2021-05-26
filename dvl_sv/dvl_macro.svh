@@ -1,18 +1,18 @@
 /*
-*  File            : dvv_macro.svh
+*  File            : dvl_macro.svh
 *  Autor           : Vlasov D.V.
 *  Data            : 26.12.2019
 *  Language        : SystemVerilog
-*  Description     : This is dvv macroses
+*  Description     : This is dvl macroses
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef DVV_MACRO__SV
-`define DVV_MACRO__SV
+`ifndef DVL_MACRO__SV
+`define DVL_MACRO__SV
 
 `define OBJ_BEGIN(T) \
     const static string type_name = `"T`"; \
-    typedef dvv_cc #(T) create; \
+    typedef dvl_cc #(T) create; \
     typedef T this_type; \
     static this_type me = new(); \
     static function create get_type(); \
@@ -27,23 +27,23 @@
         return 1; \
     endfunction : add_type \
     static bit registred = add_type(); \
-    function T create_obj(string name = "", dvv_bc parent = null); \
+    function T create_obj(string name = "", dvl_bc parent = null); \
     T obj; \
     obj = new(name, parent); \
     return obj; \
     endfunction : create_obj \
 
 /*
-    MACRO `dvv_ap_decl(SCR)
-    -- Example of using dvv_ap_decl macro:
+    MACRO `dvl_ap_decl(SCR)
+    -- Example of using dvl_ap_decl macro:
 
     `ifndef EXAMPLE__SV
     `define EXAMPLE__SV
 
-    `dvv_ap_decl(_oth_1)
-    `dvv_ap_decl(_oth_2)
+    `dvl_ap_decl(_oth_1)
+    `dvl_ap_decl(_oth_2)
 
-    class example extends dvv_scr #(int);
+    class example extends dvl_scr #(int);
         `OBJ_BEGIN( example )
 
         typedef example example_t;
@@ -52,10 +52,10 @@
         int                                 item_1;
         int                                 item_2;
         
-        dvv_ap_oth_1    #(int,example_t)    ex_ap_1;
-        dvv_ap_oth_2    #(int,example_t)    ex_ap_2;
+        dvl_ap_oth_1    #(int,example_t)    ex_ap_1;
+        dvl_ap_oth_2    #(int,example_t)    ex_ap_2;
 
-        extern function new(string name = "", dvv_bc parent = null);
+        extern function new(string name = "", dvl_bc parent = null);
 
         extern function void write(int item);
 
@@ -64,7 +64,7 @@
         
     endclass : example
 
-    function example::new(string name = "", dvv_bc parent = null);
+    function example::new(string name = "", dvl_bc parent = null);
         super.new(name,parent);
         item_ap = new(this,"item_ap");
         ex_ap_1 = new(this,"ex_ap_1");
@@ -89,8 +89,8 @@
     `endif // EXAMPLE__SV
 */
 
-`define dvv_ap_decl(SCR) \
-    class dvv_ap``SCR #(type item_type, type scr_type) extends dvv_bp #(item_type); \
+`define dvl_ap_decl(SCR) \
+    class dvl_ap``SCR #(type item_type, type scr_type) extends dvl_bp #(item_type); \
  \
         scr_type        scr; \
  \
@@ -98,15 +98,15 @@
  \
         extern virtual function void write(item_type item); \
  \
-    endclass : dvv_ap``SCR \
+    endclass : dvl_ap``SCR \
  \
-    function dvv_ap``SCR::new(scr_type scr = null, string p_name = ""); \
+    function dvl_ap``SCR::new(scr_type scr = null, string p_name = ""); \
         this.scr = scr; \
         this.p_name = p_name !="" ? p_name : "unnamed_ap"; \
     endfunction : new \
  \
-    function void dvv_ap``SCR::write(item_type item); \
+    function void dvl_ap``SCR::write(item_type item); \
         this.scr.write``SCR(item); \
     endfunction : write \
 
-`endif // DVV_MACRO__SV
+`endif // DVL_MACRO__SV

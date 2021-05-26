@@ -1,10 +1,10 @@
-# dvv_bp (base port)
+# dvl_bp (base port)
 
 Данный файл содержит описание базового класса порта.
 
 Заголовок:
 ```Verilog
-virtual class dvv_bp #(type item_type = int);
+virtual class dvl_bp #(type item_type = int);
 ```
 
 ## Параметры класса:
@@ -20,13 +20,13 @@ virtual class dvv_bp #(type item_type = int);
 | --------- | ------------------- | --------------------------- |
 | type_name | const static string | Тип компонента              |
 | p_name    | string              | Имя порта                   |
-| bp_list   | dvv_bp #(item_type) | Список портов приёмников    |
+| bp_list   | dvl_bp #(item_type) | Список портов приёмников    |
 
 #### Значение некоторых полей:
 
 | Поле      | Значение  |
 | --------- | --------- |
-| type_name | "dvv_bp"  |
+| type_name | "dvl_bp"  |
 
 ### Функции/Задачи:
 | Имя       | Описание                              |
@@ -55,4 +55,4 @@ task connect(bp_type bp_item);
 Аргументы:
 | Имя       | Тип                 | Описание        |
 | --------- | ------------------- | --------------- |
-| bp_item   | dvv_bp #(item_type) | Порт приёмника  |
+| bp_item   | dvl_bp #(item_type) | Порт приёмника  |
