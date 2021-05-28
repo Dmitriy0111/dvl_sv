@@ -32,8 +32,6 @@ add wave -position insertpoint sim:/i2c_ctb/i2c_if_0/*
 
 run -all
 
-#coverage report -detail -cvg -directive -config -comments -file fcover_report.txt -noa /i2c_test_pkg/wb_cov/cov_presc
-
 wave zoom full
 
 #quit

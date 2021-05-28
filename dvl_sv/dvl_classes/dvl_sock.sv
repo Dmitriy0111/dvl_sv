@@ -14,15 +14,18 @@ class dvl_sock #(type mail_t = int);
 
     const static string type_name = "dvl_sock";
 
+    string              name;
+
     event               sock_e;
     mailbox #(mail_t)   sock_m;
 
-    extern function new();
+    extern function new(string s_name = "");
 
     extern task connect(dvl_sock #(mail_t) oth_sock);
 
     extern task trig_sock();
     extern task wait_sock();
+
     extern task put_msg(mail_t msg);
     extern task get_msg(ref mail_t msg);
 
@@ -31,7 +34,8 @@ class dvl_sock #(type mail_t = int);
     
 endclass : dvl_sock
 
-function dvl_sock::new();
+function dvl_sock::new(string s_name = "");
+    this.name = s_name != "" ? s_name : "unnamed_sock";
     this.sock_m = new();
 endfunction : new
 

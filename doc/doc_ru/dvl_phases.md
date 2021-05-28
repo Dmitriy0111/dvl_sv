@@ -1,7 +1,7 @@
 # dvl_phases (phases classes (build, connect, run, cleanup, report))
-Данный файл содержит описание классов фаз выполнения теста.
+Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЃРѕРґРµСЂР¶РёС‚ РѕРїРёСЃР°РЅРёРµ РєР»Р°СЃСЃРѕРІ С„Р°Р· РІС‹РїРѕР»РЅРµРЅРёСЏ С‚РµСЃС‚Р°.
 
-Заголовок:
+Р—Р°РіРѕР»РѕРІРѕРє:
 ```Verilog
 class dvl_build_phase extends dvl_phase;
 class dvl_connect_phase extends dvl_phase;
@@ -10,22 +10,22 @@ class dvl_clean_up_phase extends dvl_phase;
 class dvl_report_phase extends dvl_phase;
 ```
 
-## Поля и функции/задачи класса  
+## РџРѕР»СЏ Рё С„СѓРЅРєС†РёРё/Р·Р°РґР°С‡Рё РєР»Р°СЃСЃР°  
 
-Данный класс наследует поля и функции/задачи из базового класса фазы [dvl_phase.md](dvl_phase.md).
+Р”Р°РЅРЅС‹Р№ РєР»Р°СЃСЃ РЅР°СЃР»РµРґСѓРµС‚ РїРѕР»СЏ Рё С„СѓРЅРєС†РёРё/Р·Р°РґР°С‡Рё РёР· Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° С„Р°Р·С‹ [dvl_phase.md](dvl_phase.md).
 
-### Поля:
-| Имя       | Тип                               | Описание                          |
+### РџРѕР»СЏ:
+| РРјСЏ       | РўРёРї                               | РћРїРёСЃР°РЅРёРµ                          |
 | --------- | --------------------------------- | --------------------------------- |
-| inst      | local static dvl_build_phase      | Экземпляр фазы dvl_build_phase    |
-| inst      | local static dvl_connect_phase    | Экземпляр фазы dvl_connect_phase  |
-| inst      | local static dvl_run_phase        | Экземпляр фазы dvl_run_phase      |
-| inst      | local static dvl_clean_up_phase   | Экземпляр фазы dvl_clean_up_phase |
-| inst      | local static dvl_report_phase     | Экземпляр фазы dvl_report_phase   |
+| inst      | local static dvl_build_phase      | Р­РєР·РµРјРїР»СЏСЂ С„Р°Р·С‹ dvl_build_phase    |
+| inst      | local static dvl_connect_phase    | Р­РєР·РµРјРїР»СЏСЂ С„Р°Р·С‹ dvl_connect_phase  |
+| inst      | local static dvl_run_phase        | Р­РєР·РµРјРїР»СЏСЂ С„Р°Р·С‹ dvl_run_phase      |
+| inst      | local static dvl_clean_up_phase   | Р­РєР·РµРјРїР»СЏСЂ С„Р°Р·С‹ dvl_clean_up_phase |
+| inst      | local static dvl_report_phase     | Р­РєР·РµРјРїР»СЏСЂ С„Р°Р·С‹ dvl_report_phase   |
 
-#### Значение некоторых полей:
+#### Р—РЅР°С‡РµРЅРёРµ РЅРµРєРѕС‚РѕСЂС‹С… РїРѕР»РµР№:
 
-| Поле      | Значение              |
+| РџРѕР»Рµ      | Р—РЅР°С‡РµРЅРёРµ              |
 | --------- | --------------------- |
 | type_name | "dvl_build_phase"     |
 | type_name | "dvl_connect_phase"   |
@@ -33,34 +33,34 @@ class dvl_report_phase extends dvl_phase;
 | type_name | "dvl_clean_up_phase"  |
 | type_name | "dvl_report_phase"    |
 
-### Функции/Задачи:
-Класс содержит следующие функции/задачи:
-| Имя       | Описание                      |
+### Р¤СѓРЅРєС†РёРё/Р—Р°РґР°С‡Рё:
+РљР»Р°СЃСЃ СЃРѕРґРµСЂР¶РёС‚ СЃР»РµРґСѓСЋС‰РёРµ С„СѓРЅРєС†РёРё/Р·Р°РґР°С‡Рё:
+| РРјСЏ       | РћРїРёСЃР°РЅРёРµ                      |
 | --------- | ----------------------------- |
-| new       | Конструктор класса            |
-| create    | Задача для создания фазы      |
-| exec      | Задача для исполнения фазы    |
+| new       | РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°            |
+| create    | Р—Р°РґР°С‡Р° РґР»СЏ СЃРѕР·РґР°РЅРёСЏ С„Р°Р·С‹      |
+| exec      | Р—Р°РґР°С‡Р° РґР»СЏ РёСЃРїРѕР»РЅРµРЅРёСЏ С„Р°Р·С‹    |
 
-### Описание функций/задач:
+### РћРїРёСЃР°РЅРёРµ С„СѓРЅРєС†РёР№/Р·Р°РґР°С‡:
 
 #### new
-Конструктор класса для создания экземпляра dvl_build_phase/dvl_connect_phase/dvl_run_phase/dvl_clean_up_phase/dvl_report_phase.
+РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° РґР»СЏ СЃРѕР·РґР°РЅРёСЏ СЌРєР·РµРјРїР»СЏСЂР° dvl_build_phase/dvl_connect_phase/dvl_run_phase/dvl_clean_up_phase/dvl_report_phase.
 
-Заголовок:
+Р—Р°РіРѕР»РѕРІРѕРє:
 ```Verilog
 function new(string name = "", dvl_bc parent = null);
 ```
 
-Аргументы:
-| Имя       | Тип       | Описание                  |
+РђСЂРіСѓРјРµРЅС‚С‹:
+| РРјСЏ       | РўРёРї       | РћРїРёСЃР°РЅРёРµ                  |
 | --------- | --------- | ------------------------- |
-| name      | string    | Имя компонента            |
-| parent    | dvl_bc    | Экземпляр класса родителя |
+| name      | string    | РРјСЏ РєРѕРјРїРѕРЅРµРЅС‚Р°            |
+| parent    | dvl_bc    | Р­РєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° СЂРѕРґРёС‚РµР»СЏ |
 
 #### create
-Задача для создания экземпляра inst dvl_build_phase/dvl_connect_phase/dvl_run_phase/dvl_clean_up_phase/dvl_report_phase.
+Р—Р°РґР°С‡Р° РґР»СЏ СЃРѕР·РґР°РЅРёСЏ СЌРєР·РµРјРїР»СЏСЂР° inst dvl_build_phase/dvl_connect_phase/dvl_run_phase/dvl_clean_up_phase/dvl_report_phase.
 
-Заголовок:
+Р—Р°РіРѕР»РѕРІРѕРє:
 ```Verilog
 function dvl_build_phase::create(string name = "", dvl_bc parent = null);
 function dvl_connect_phase::create(string name = "", dvl_bc parent = null);
@@ -69,16 +69,16 @@ function dvl_clean_up_phase::create(string name = "", dvl_bc parent = null);
 function dvl_report_phase::create(string name = "", dvl_bc parent = null);
 ```
 
-Аргументы:
-| Имя       | Тип       | Описание                  |
+РђСЂРіСѓРјРµРЅС‚С‹:
+| РРјСЏ       | РўРёРї       | РћРїРёСЃР°РЅРёРµ                  |
 | --------- | --------- | ------------------------- |
-| name      | string    | Имя компонента            |
-| parent    | dvl_bc    | Экземпляр класса родителя |
+| name      | string    | РРјСЏ РєРѕРјРїРѕРЅРµРЅС‚Р°            |
+| parent    | dvl_bc    | Р­РєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° СЂРѕРґРёС‚РµР»СЏ |
 
 #### exec
-Задача для исполнения фазы.
+Р—Р°РґР°С‡Р° РґР»СЏ РёСЃРїРѕР»РЅРµРЅРёСЏ С„Р°Р·С‹.
 
-Заголовок:
+Р—Р°РіРѕР»РѕРІРѕРє:
 ```Verilog
 virtual task exec();
 ```

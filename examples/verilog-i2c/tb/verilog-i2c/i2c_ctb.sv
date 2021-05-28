@@ -110,7 +110,7 @@ module i2c_ctb();
         dvl_res_db#( virtual clk_rst_if )::set_res_db( "cr_if_0" , cr_if_0 );
         dvl_res_db#( virtual i2c_if )::set_res_db( "i2c_if_0" , i2c_if_0 );
         
-        dvl_res_db#( integer )::set_res_db( "rep_number" , repeat_n );
+        dvl_res_db#( int )::set_res_db( "rep_number" , repeat_n );
 
         run_test("");
     end
