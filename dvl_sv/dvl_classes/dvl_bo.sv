@@ -30,6 +30,8 @@ class dvl_bo;
 
     static  dvl_bo  type_names[string];
 
+    string          msg;
+
     extern function new(string name = "", dvl_bo parent = null);
 
     extern task file_write(string msg);

@@ -16,14 +16,16 @@ class dvl_res #(type res_t);
 
     res_t       res_val;
     string      res_name;
+    string      res_path;
 
-    extern function new(string res_name = "", res_t res_val = null);
+    extern function new(string res_name = "", string res_path = "", res_t res_val = null);
     
 endclass : dvl_res
 
-function dvl_res::new(string res_name = "", res_t res_val = null);
+function dvl_res::new(string res_name = "", string res_path = "", res_t res_val = null);
     this.res_val = res_val;
     this.res_name = res_name;
+    this.res_path = res_path;
 endfunction : new
 
 `endif // DVL_RES__SV

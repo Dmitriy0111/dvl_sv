@@ -16,27 +16,40 @@ class dvl_res_db #(type res_t);
 
     static  dvl_res     #(res_t)    dvl_db[$];
 
-    extern static task         set_res_db(string name, input res_t in_res);
-    extern static function bit get_res_db(string name, inout res_t out_res);
+    extern static task         set_res_db(string path, string name, input res_t in_res);
+    extern static function bit get_res_db(dvl_bc cntx, string path, string name, inout res_t out_res);
     
 endclass : dvl_res_db
-
-task dvl_res_db::set_res_db(string name, input res_t in_res);
-    dvl_res #(res_t) new_res = new(name, in_res);
+// TODO:
+task dvl_res_db::set_res_db(string path, string name, input res_t in_res);
+    dvl_res #(res_t) new_res = new(name, path, in_res);
     dvl_res #(res_t) res_q [$];
     res_q = dvl_db.find with(item.res_name == name);
+    res_q = res_q.find with(item.res_path == path);
+
     if(res_q.size() == 0)
         dvl_db.push_back(new_res);
 endtask : set_res_db
+// TODO:
+function bit dvl_res_db::get_res_db(dvl_bc cntx, string path, string name, inout res_t out_res);
+    dvl_res #(res_t) res_q [$];
 
-function bit dvl_res_db::get_res_db(string name, inout res_t out_res);
-    foreach( dvl_db[i] )
-        if( dvl_db[i].res_name == name )
-        begin
-            out_res = dvl_db[i].res_val;
-            return '1;
+    res_q = dvl_db.find with(item.res_name == name);
+    if( path != "*" )
+        if( path == "" ) begin
+            path = cntx.fname;
+
+            res_q = res_q.find with(item.res_path == path);
         end
-    return '0;
+
+    if(res_q.size() == 0)
+        return '0;
+    else
+    begin
+        out_res = res_q[0].res_val;
+        return '1;
+    end
+
 endfunction : get_res_db
 
 `endif // DVL_RES_DB__SV
