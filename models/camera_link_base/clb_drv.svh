@@ -11,13 +11,15 @@
 `define CLB_DRV__SVH
 
 /*
-    |   0   |   1   |   2   |   3   |   4   |   5   |   6   |
-    |-------|-------|-------|-------|-------|-------|-------|
-    | Spare | B7    | B6    | G7    | G6    | R7    | R6    |
-    | DVAL  | FVAL  | LVAL  | B5    | B4    | B3    | B2    |
-    | B1    | B0    | G5    | G4    | G3    | G2    | G1    |
-    | G0    | R5    | R4    | R3    | R2    | R1    | R0    |
+    | Line/Bit |   0   |   1   |   2   |   3   |   4   |   5   |   6   |
+    |----------|-------|-------|-------|-------|-------|-------|-------|
+    | 0        | G0    | R5    | R4    | R3    | R2    | R1    | R0    |
+    | 1        | B1    | B0    | G5    | G4    | G3    | G2    | G1    |
+    | 2        | DVAL  | FVAL  | LVAL  | B5    | B4    | B3    | B2    |
+    | 3        | Spare | B7    | B6    | G7    | G6    | R7    | R6    |
 */
+
+`timescale 1ps/1ps
 
 class clb_drv extends dvl_bc;
     `OBJ_BEGIN( clb_drv )
@@ -40,9 +42,9 @@ class clb_drv extends dvl_bc;
     bit     [23 : 0]    RGBV;
     int                 CTRL;
 
-    int                 LVAL_F = 32'h1;
-    int                 FVAL_F = 32'h2;
-    int                 DVAL_F = 32'h3;
+    int         LVAL_F = 32'b001;
+    int         FVAL_F = 32'b010;
+    int         DVAL_F = 32'b100;
 
     int         fve2fvs = 10;   // frame valid end to frame valid start
     int         fvs2flv = 10;   // frame valid start to first line valid
@@ -68,6 +70,8 @@ function clb_drv::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
     // clock component
     tx_comp[0] = 7'b1100011;
+
+    $timeformat(-12,3,"ps",20);
 endfunction : new
 
 task clb_drv::build();
@@ -76,7 +80,7 @@ task clb_drv::build();
         Height = 800;
 
     if( !dvl_res_db#(int)::get_res_db(this, "", "Width_in", Width) )
-        Width = 800;
+        Width = 600;
 
     if( !dvl_res_db#(string)::get_res_db(this, "", "path2folder_in", path2folder) )
         path2folder = "example_f/";
