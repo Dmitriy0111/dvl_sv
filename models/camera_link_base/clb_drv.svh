@@ -24,6 +24,7 @@ class clb_drv extends dvl_bc;
 
     typedef virtual clb_lvds_if clb_lvds_vif;
 
+    string          vif_name = "vif";
     clb_lvds_vif    vif;
 
     int         Height = 800;
@@ -94,8 +95,11 @@ task clb_drv::build();
 
     if( !dvl_res_db#(string)::get_res_db(this, "", "in_format_in", in_format) )
         in_format = "Grad";
+    // Image interface name
+    if( !dvl_res_db#(string)::get_res_db(this, "", "vif_name", vif_name) )
+        $fatal();
     // Image interface
-    if( !dvl_res_db#(virtual clb_lvds_if)::get_res_db(this, "", "lvds_if", vif) )
+    if( !dvl_res_db#(virtual clb_lvds_if)::get_res_db(this, "", vif_name, vif) )
         $fatal();
     // Timing settings
     if( !dvl_res_db#(int)::get_res_db(this, "", "wtbsftr", wtbsftr) )

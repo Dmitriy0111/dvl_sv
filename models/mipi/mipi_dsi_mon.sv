@@ -35,16 +35,6 @@ endfunction : new
 
 task mipi_dsi_mon::build();
     super.build();
-    
-    if( !dvl_res_db#(mipi_vif)::get_res_db("mipi_if_0", vif) )
-        $fatal();
-    if( !dvl_res_db#(int)::get_res_db("line_num", line_num) )
-        $fatal();
-    if( !dvl_res_db#(int)::get_res_db("wr2file_en", wr2file_en) )
-        wr2file_en = '1;
-
-    if( wr2file_en )
-        fd = $fopen( { name , ".hex" },"w");
 endtask : build
 
 task mipi_dsi_mon::run();

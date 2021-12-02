@@ -35,16 +35,6 @@ endfunction : new
 
 task mipi_csi2_mon::build();
     super.build();
-
-    if( !dvl_res_db#(mipi_vif)::get_res_db("mipi_if_0", vif) )
-        $fatal();
-    if( !dvl_res_db#(int)::get_res_db("line_num", line_num) )
-        $fatal();
-    if( !dvl_res_db#(int)::get_res_db("wr2file_en", wr2file_en) )
-        wr2file_en = '1;
-
-    if( wr2file_en )
-        fd = $fopen( { name , ".hex" },"w");
 endtask : build
 
 task mipi_csi2_mon::run();
@@ -122,7 +112,8 @@ task mipi_csi2_mon::analysis();
                 // Generate info
                 $swrite(
                             msg,
-                            "[0x%8h][0x%8h] Packet: type:<%2h> size:<%4h> ecc:<%2h> fecc:<%2h> ecc_status:<%s> <%s> at time %t\n",
+                            "<%s> [0x%8h][0x%8h] Packet: type:<%2h> size:<%4h> ecc:<%2h> fecc:<%2h> ecc_status:<%s> <%s> at time %t\n",
+                            this.name,
                             sot_num,
                             pkt_num,
                             item.mipi_h.ptype,
@@ -164,7 +155,8 @@ task mipi_csi2_mon::analysis();
 
                 $swrite(
                             msg,
-                            "[0x%8h][0x%8h] Packet: calc crc<%2h>: rec crc:<%2h> status:<%s> at time %t\n",
+                            "<%s> [0x%8h][0x%8h] Packet: calc crc<%2h>: rec crc:<%2h> status:<%s> at time %t\n",
+                            this.name,
                             sot_num,
                             pkt_num,
                             calc_crc,
@@ -173,6 +165,8 @@ task mipi_csi2_mon::analysis();
                             $time()
                         );
                 print(msg);
+                
+                item_aep.write(item);
             end
         end
     endcase

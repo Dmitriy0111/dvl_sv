@@ -1,21 +1,22 @@
 /*
-*  File            : mipi_base_mon.sv
+*  File            : mipi_mon.sv
 *  Autor           : Vlasov D.V.
 *  Data            : 17.05.2021
 *  Language        : SystemVerilog
-*  Description     : This is mipi base monitor
+*  Description     : This is mipi monitor
 *  Copyright(c)    : 2019 - 2021 Vlasov D.V.
 */
 
-`ifndef MIPI_BASE_MON__SV
-`define MIPI_BASE_MON__SV
+`ifndef MIPI_MON__SV
+`define MIPI_MON__SV
 
 timeprecision   1ps;
 timeunit        1ps;
 
-class mipi_base_mon extends dvl_mon #(mipi_item);
-    `OBJ_BEGIN( mipi_base_mon )
-
+class mipi_mon extends dvl_mon #(mipi_item);
+    `OBJ_BEGIN( mipi_mon )
+    // type of mipi
+    mipi_types          mipi_type;
     // interface name
     string              vif_name = "vif";
     // virtual interface
@@ -82,14 +83,18 @@ class mipi_base_mon extends dvl_mon #(mipi_item);
 
     extern task analysis();
 
-endclass : mipi_base_mon
+endclass : mipi_mon
 
-function mipi_base_mon::new(string name = "", dvl_bc parent = null);
+function mipi_mon::new(string name = "", dvl_bc parent = null);
     super.new(name,parent);
+    item_aep = new("item_aep");
+    $timeformat(-12, 3, " ps", 10);
 endfunction : new
 
-task mipi_base_mon::build();
+task mipi_mon::build();
     calc_crc16_table();
+
+    dvl_res_db#(mipi_types)::get_res_db(this, "", "mipi_type", mipi_type);
 
     dvl_res_db#(string)::get_res_db(this, "", "vif_name", vif_name);
 
@@ -104,10 +109,23 @@ task mipi_base_mon::build();
         fd = $fopen( { name , ".hex" },"w");
 endtask : build
 
-task mipi_base_mon::run();
+task mipi_mon::run();
+    fork
+        forever
+        begin
+            @(edge vif.clk_p);
+            get_bits();
+        end
+        forever
+            wait_sot();
+        forever
+            main_rec();
+        forever
+            wait_lps();
+    join_none
 endtask : run
 
-task mipi_base_mon::wait_sot();
+task mipi_mon::wait_sot();
     wait( start_wait_sot.triggered() );
     while(1) begin
         @(negedge vif.clk_p);
@@ -153,10 +171,26 @@ task mipi_base_mon::wait_sot();
     ->start_wait_lps;
 endtask : wait_sot
 
-task mipi_base_mon::main_rec();
+task mipi_mon::main_rec();
+    fork
+        begin
+            rec_proc = process::self();
+            wait(sot_detect.triggered);
+            while(1) begin
+                wait_byte();
+                set_arr();
+                analysis();
+            end
+        end
+        begin
+            wait(sot_detect.triggered);
+            wait(kill_rec_proc.triggered);
+            rec_proc.kill();
+        end
+    join_any
 endtask : main_rec
 
-task mipi_base_mon::wait_lps();
+task mipi_mon::wait_lps();
     ->start_wait_sot;
     wait( start_wait_lps.triggered );
 
@@ -188,18 +222,18 @@ task mipi_base_mon::wait_lps();
     ->kill_rec_proc;
 endtask : wait_lps
 
-task mipi_base_mon::wait_byte();
+task mipi_mon::wait_byte();
     repeat(4) @(negedge vif.clk_p);
 endtask : wait_byte
 
-task mipi_base_mon::get_bits();
+task mipi_mon::get_bits();
     dat_0 = { vif.d0_p , dat_0[7 : 1] };
     dat_1 = { vif.d1_p , dat_1[7 : 1] };
     dat_2 = { vif.d2_p , dat_2[7 : 1] };
     dat_3 = { vif.d3_p , dat_3[7 : 1] };
 endtask : get_bits
 
-task mipi_base_mon::set_arr();
+task mipi_mon::set_arr();
     if( line_num >= 1) begin
         item.rec_arr_v[rec_cnt] = dat_0; 
         rec_cnt++;
@@ -225,7 +259,7 @@ task mipi_base_mon::set_arr();
     end
 endtask : set_arr
 
-function byte mipi_base_mon::test_ecc(bit [23 : 0] tv);
+function byte mipi_mon::test_ecc(bit [23 : 0] tv);
     byte ret_val;
 
     ret_val[0] = tv[ 0  ] ^ tv[ 1  ] ^ tv[ 2  ] ^ tv[ 4  ] ^ tv[ 5  ] ^ tv[ 7  ] ^ tv[ 10 ] ^ tv[ 11 ] ^ tv[ 13 ] ^ tv[ 16 ] ^ tv[ 20 ] ^ tv[ 21 ] ^ tv[ 22 ] ^ tv[ 23 ];
@@ -238,7 +272,7 @@ function byte mipi_base_mon::test_ecc(bit [23 : 0] tv);
     return ret_val;
 endfunction : test_ecc
 
-task mipi_base_mon::calc_crc16_table();
+task mipi_mon::calc_crc16_table();
     bit [15 : 0] crc_val;
 
     foreach( crc16_table[i] ) begin
@@ -252,7 +286,7 @@ task mipi_base_mon::calc_crc16_table();
     end
 endtask : calc_crc16_table
 
-task mipi_base_mon::calc_crc16();
+task mipi_mon::calc_crc16();
     int index;
 
     calc_crc = '1;
@@ -263,7 +297,114 @@ task mipi_base_mon::calc_crc16();
     end
 endtask : calc_crc16
 
-task mipi_base_mon::analysis();
+task mipi_mon::analysis();
+    case ( rec_s_ )
+        wait_header:
+        begin
+            if ( header_cnt >= 4 ) begin
+                item.rec_arr_p = rec_cnt - header_cnt;
+                header_cnt -= 4;
+
+                item.mipi_h.ptype = item.rec_arr_v[item.rec_arr_p];
+                item.mipi_h.size  = { item.rec_arr_v[item.rec_arr_p+2] , item.rec_arr_v[item.rec_arr_p+1] };
+                item.mipi_h.ecc   = item.rec_arr_v[item.rec_arr_p+3];
+                item.mipi_h.psize = short_pkt;
+                
+                fecc = test_ecc( { item.rec_arr_v[item.rec_arr_p+2] , item.rec_arr_v[item.rec_arr_p+1] , item.rec_arr_v[item.rec_arr_p] } );
+
+                item.rec_arr_p += 4;
+
+                pkt_type_s = "";
+
+                if( mipi_type == mipi_dsi ) begin
+                    foreach( mipi_dsi_cmds[i] )
+                        if( ( mipi_dsi_cmds[i].val & 8'h3F ) == ( item.mipi_h.ptype & 8'h3F ) ) begin
+                            pkt_type_s = mipi_dsi_cmds[i].name;
+                            item.mipi_h.psize = mipi_dsi_cmds[i].pkt_size;
+                            break;
+                        end
+                end
+                else if( mipi_type == mipi_csi2 ) begin
+                    foreach( mipi_csi2_cmds[i] )
+                    if( ( mipi_csi2_cmds[i].val & 8'h3F ) == ( item.mipi_h.ptype & 8'h3F ) ) begin
+                        pkt_type_s = mipi_csi2_cmds[i].name;
+                        item.mipi_h.psize = mipi_csi2_cmds[i].pkt_size;
+                        break;
+                    end
+                end
+
+                if( pkt_type_s == "" ) begin
+                    pkt_type_s = "Other";
+                end
+                
+                if( item.mipi_h.psize == long_pkt )
+                    rec_s_ = wait_data;
+                
+                // EoT
+                if( ( item.mipi_h.ptype != '0 ) && ( item.mipi_h.ptype != '1 ) ) begin
+                    pkt_num++;
+                end
+                // Generate info
+                $swrite(
+                            msg,
+                            "<%s> [0x%8h][0x%8h] Packet: type:<%2h> size:<%4h> ecc:<%2h> fecc:<%2h> ecc_status:<%s> <%s> at time %t\n",
+                            this.name,
+                            sot_num,
+                            pkt_num,
+                            item.mipi_h.ptype,
+                            item.mipi_h.size,
+                            item.mipi_h.ecc,
+                            fecc,
+                            item.mipi_h.ecc == fecc ? "PASS" : "FAIL",
+                            pkt_type_s,
+                            $time()
+                        );
+                // Not EoT ('0 and '1)
+                if( ( item.mipi_h.ptype != '0 ) && ( item.mipi_h.ptype != '1 ) ) begin
+                    print(msg);
+                    // write packet
+                    if( wr2file_en )
+                        $fwrite( fd, "%2h %2h %2h %2h\n", item.rec_arr_v[item.rec_arr_p-4], item.rec_arr_v[item.rec_arr_p-3], item.rec_arr_v[item.rec_arr_p-2], item.rec_arr_v[item.rec_arr_p-1] );
+                end
+            end
+        end
+        wait_data:
+        begin
+            if( rec_cnt >= (item.mipi_h.size + 2 + item.rec_arr_p) ) begin
+                header_cnt = rec_cnt - (item.mipi_h.size + 2 + item.rec_arr_p);
+                rec_s_ = wait_header;
+
+                calc_crc16();
+
+                if( wr2file_en ) begin
+                    // write data
+                    for ( int i = item.rec_arr_p ; i < ( item.rec_arr_p + item.mipi_h.size ) ; i++ ) begin
+                        $fwrite( fd, "%2h ", item.rec_arr_v[i] );
+                    end
+                    $fwrite( fd, "\n");
+                    // write received crc
+                    $fwrite( fd, "%2h %2h\n", item.rec_arr_v[item.rec_arr_p + item.mipi_h.size + 0], item.rec_arr_v[item.rec_arr_p + item.mipi_h.size + 1]);
+                end
+
+                rec_crc = { item.rec_arr_v[item.rec_arr_p + item.mipi_h.size + 1] , item.rec_arr_v[item.rec_arr_p + item.mipi_h.size + 0] };
+
+                $swrite(
+                            msg,
+                            "<%s> [0x%8h][0x%8h] Packet: calc crc<%2h>: rec crc:<%2h> status:<%s> at time %t\n",
+                            this.name,
+                            sot_num,
+                            pkt_num,
+                            calc_crc,
+                            rec_crc,
+                            calc_crc == rec_crc ? "PASS" : "FAIL",
+                            $time()
+                        );
+                print(msg);
+
+                item_aep.write(item);
+            end
+        end
+    endcase
 endtask : analysis
 
-`endif // MIPI_BASE_MON__SV
+`endif // MIPI_MON__SV

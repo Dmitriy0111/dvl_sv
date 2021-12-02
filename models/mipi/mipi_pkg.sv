@@ -34,6 +34,11 @@ package mipi_pkg;
         int         rec_arr_p;
         byte        rec_arr_v [int];
     } mipi_item;
+
+    typedef enum {
+        mipi_dsi = 0,
+        mipi_csi2
+    } mipi_types;
     /*
         MIPI DSI 
     */
@@ -227,10 +232,11 @@ package mipi_pkg;
     };
 
     import dvl_sv_pkg::*;
-    `include "../dvl_sv/dvl_sv/dvl_macro.svh"
+    `include "../../dvl_sv/dvl_macro.svh"
 
     `include "mipi_base_mon.sv"
+    `include "mipi_mon.sv"
     `include "mipi_dsi_mon.sv"
     `include "mipi_csi2_mon.sv"
     
-endpackage: mipi_pkg
+endpackage : mipi_pkg
